@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one or more
+    contributor license agreements.  See the NOTICE file distributed with
+    this work for additional information regarding copyright ownership.
+    The ASF licenses this file to You under the Apache License, Version 2.0
+    (the "License"); you may not use this file except in compliance with
+    the License.  You may obtain a copy of the License at
+   
+         http://www.apache.org/licenses/LICENSE-2.0
+   
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<!--
+     This is a blank Struts configuration file with an example
+     welcome action/page and other commented sample elements.
+
+     Struts Validator is configured using the factory defaults
+     and is ready-to-use.
+
+     NOTE: If you have a generator tool to create the corresponding Java classes
+     for you, you could include the details in the "form-bean" declarations.
+     Otherwise, you would only define the "form-bean" element itself, with the
+     corresponding "name" and "type" attributes, as shown here.
+-->
+
+
+<struts-config>
+
+
+<!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+        <form-bean name="CadencementDeltaForm" type="strutsForms.CadencementDeltaForm"/>
+        <form-bean name="LoginForm" type="strutsForms.LoginForm"/>  
+        <form-bean name="getAllMilestonesForm" type="strutsForms.GetAllMilestonesForm"/>  
+        <form-bean name="createObjectFileForm" type="strutsForms.CreateObjectFileForm"/> 
+        <form-bean name="deployerPackForm" type="strutsForms.DeployerPackForm"/>  
+        <form-bean name="versionnerPackForm" type="strutsForms.VersionnerPackForm"/> 
+        <form-bean name="genererMessageTracForm" type="strutsForms.GenererMessageTracForm"/> 
+        <form-bean name="VerificationDeltaForm" type="strutsForms.VerificationDeltaForm"/> 
+        <form-bean name="VerificationDeltaDownloadPackForm" type="strutsForms.VerificationDeltaDownloadPackForm"/> 
+        <form-bean name="PreparationFormerUnPackForm" type="strutsForms.PreparationFormerUnPackForm"/> 
+        <form-bean name="FormerUnPackForm" type="strutsForms.FormerUnPackForm"/>        
+        <form-bean name="PreparationComparaisonObjetsForm" type="strutsForms.PreparationComparaisonObjetsForm"/> 
+        <form-bean name="ComparaisonObjetsForm" type="strutsForms.ComparaisonObjetsForm"/> 
+        <form-bean name="EtudeIntersectionInputObjetsForm" type="strutsForms.EtudeIntersectionInputObjetsForm"/> 
+        <form-bean name="LancerEtudeIntersectionInputObjetsForm" type="strutsForms.LancerEtudeIntersectionInputObjetsForm"/> 
+        <form-bean name="DeployerNPacksSurNEnvironnementsForm" type="strutsForms.DeployerNPacksSurNEnvironnementsForm"/> 
+        <form-bean name="LancerDeployerNPacksSurNEnvironnementsForm" type="strutsForms.DeployerNPacksSurNEnvironnementsForm"/>
+        <form-bean name="ConstitutionPackMultiprojetsForm" type="strutsForms.ConstitutionPackMultiprojetsForm"/> 
+        <form-bean name="InitialisationWorkflowAdminForm" type="strutsForms.InitialisationWorkflowAdminForm"/>
+        <form-bean name="InitialisationUserHasEnvironnementForm" type="strutsForms.InitialisationUserHasEnvironnementForm"/>
+        <form-bean name="GestionLivraisonsInputPacksEnvIE_Form" type="strutsForms.GestionLivraisonsInputPacksEnvIE_Form"/>
+        <!-- Gestion des livraisons Hraccess-->
+        <form-bean name="getAllTicketsHraccessForm" type="strutsForms.hrAccess.GetAllTicketsHraccessForm"/>
+        <form-bean name="exporterPackHraccessForm" type="strutsForms.hrAccess.ExporterPackHraccessForm"/>
+        <form-bean name="importerPackHraccessForm" type="strutsForms.hrAccess.ImporterPackHraccessForm"/>
+        <form-bean name="versionnerPackHraccessForm" type="strutsForms.hrAccess.VersionnerPackHraccessForm"/>
+        <!-- TraitementLivraisonAutoForm -->
+        <form-bean name="TraitementLivraisonAutoForm" type="strutsForms.TraitementLivraisonAutoForm"/>
+    </form-beans>
+
+
+<!-- ========================================= Global Exception Definitions -->
+
+    <global-exceptions>
+        <!-- sample exception handler
+        <exception
+            key="expired.password"
+            type="app.ExpiredPasswordException"
+            path="/changePassword.jsp"/>
+        end sample -->
+    </global-exceptions>
+
+
+<!-- =========================================== Global Forward Definitions -->
+
+    <global-forwards>
+        <!-- Test -->
+        <forward name="test" path="/test.do" />
+        <!-- Gestion Des Demandes -->
+        <forward name="definitionNouveauBesoin" path="/definitionNouveauBesoin.do" />
+        <forward name="listeDesProjets" path="/listeDesProjets.do" />
+        <forward name="specificationProjet" path="/specificationProjet.do" />
+        <!-- En cours de construction -->
+        <forward name="accueil" path="/accueil.do" />
+        <forward name="pageEnCoursDeConstruction" path="/pageEnCoursDeConstruction.do" />
+        <!-- Default forward to "accueil" action -->
+        <forward name="initialisationLogin" path="/LoginForm.do" />
+        <forward name="login" path="/login.do" />
+        <!-- Demonstrates using index.jsp to forward -->
+        <forward name="Home" path="/getAllMilestonesForm.do" />
+        <forward name="HomeOV" path="/getAllMilestonesForm.do?acteur=OV" />
+        <forward name="SelfServiceLivraisonCDD" path="/getAllMilestonesForm.do?acteur=CDD" />
+        <!-- Gestion des livrisons -->
+        <forward name="gestionDesLivraisonsOV" path="/gestionDesLivraisonsOV.do"  />
+        <forward name="gestionDesLivraisonsIE" path="/gestionDesLivraisonsIE.do"  />
+        <forward name="gestionDesLivraisonsCDD" path="/gestionDesLivraisonsCDD.do"  />
+        <forward name="analysePack" path="/analysePack.do" />
+        <forward name="deployerPackForm" path="/deployerPackForm.do" /> 
+        <forward name="resultatDeploiementPack" path="/resultatDeploiementPack.do" />
+        <forward name="resultatVersionnerPack" path="/resultatVersionnerPack.do" /> 
+        <forward name="resultatMessageTrac" path="/resultatMessageTrac.do" /> 
+        <forward name="genererMessageTracForm" path="/genererMessageTracForm.do" /> 
+        <!-- Comparaison Pack -->
+        <forward name="VerificationDelta" path="/VerificationDelta.do" /> 
+        <forward name="ResultatComparaisonDelta" path="/ResultatComparaisonDelta.do" />
+        <!-- Download compressed packs -->
+        <forward name="DownloadComparaisonDelta" path="/DownloadComparaisonDelta.do" />
+        <!-- Former Un pack -->
+        <forward name="FormerUnPack" path="/FormerUnPack.do" />
+        <forward name="ResultatCreerUnPack" path="/ResultatCreerUnPack.do" />
+        <!-- Comparaison Objets -->
+        <forward name="ComparaisonObjets" path="/ComparaisonObjets.do" />
+        <forward name="ResultatComparaisonObjets" path="/ResultatComparaisonObjets.do" />
+        <!-- étude d'intersection -->
+        <forward name="EtudeIntersection" path="/EtudeIntersectionInputObjets.do" />
+        <forward name="ResutatEtudeIntersection" path="/ResutatEtudeIntersection.do" />
+        <!-- Erreur Inexistance Objets -->
+        <forward name="AfficherMessageErreurs" path="/AfficherMessageErreurs.do" />            
+        <!-- Administration: gestion de la base de données de paramètrages -->
+        <forward name="GestionBaseDonnesParametrages" path="/GestionBaseDonnesParametrages.do" />
+        <!-- Constitution Pack Multiprojets -->
+        <forward name="ConstitutionPackMultiprojets" path="/ConstitutionPackMultiprojets.do" />
+        <forward name="ResultatConstitutionPackMultiprojets" path="/ResultatConstitutionPackMultiprojets.do" />
+        <!-- Deployer plusieurs packs sur plusieurs environnements -->
+        <forward name="InputDeployerNPacksSurNEnvironnements" path="/InputDeployerNPacksSurNEnvironnements.do" />
+        <forward name="ResultatDeployerNPacksSurNEnvironnements" path="/ResultatDeployerNPacksSurNEnvironnements.do" />
+        <forward name="MessageTracIntegration" path="/MessageTracIntegration.do" />
+        <!-- workflow -->
+        <forward name="ResultatinitialisationWorkflow" path="/WorkflowInterface.do" />
+        <!-- Administration: UserHasEnvironnement -->
+        <forward name="ResultatUserHasEnvironnement" path="/ResultatUserHasEnvironnement.do" />
+        <!-- Acces au environnements -->
+        <forward name="AccesAuxEnvironnements" path="/AccesAuxEnvironnements.do" />
+        <!-- Clôture Tickets Anomalie -->
+        <forward name="ClotureTicketAnomalie" path="/ClotureTicketAnomalie.do" />
+        <!-- Administration: Fonctionnalités -->
+        <forward name="AdministrationFonctionnalite" path="/AdministrationFonctionnalite.do" />
+        <!-- Administration: TypeRegle -->
+        <forward name="AdministrationContraintesIntegrite" path="/AdministrationContraintesIntegrite.do" />
+        <!-- SuiviCOB  -->
+        <forward name="SuiviCOBs" path="/SuiviCOBs.do" />
+        <!-- Cadencement Delta -->
+        <forward name="Cadencement" path="/Cadencement.do" />
+        <forward name="ResultatCadencement" path="/ResultatCadencement.do" />
+        
+        <!-- Gestion des livraisons Hraccess-->
+        <!-- <forward name="Home" path="/getAllTicketsHraccessForm.do" /> -->
+        <forward name="gestionDesLivraisonsHraccessOV" path="/gestionDesLivraisonsHraccessOV.do"  />
+        <forward name="gestionDesLivraisonsHraccessIE" path="/gestionDesLivraisonsHraccessIE.do"  />
+        <forward name="resultatExportHraccess" path="/resultatExportHraccess.do" />
+        <forward name="importerPackHraccessForm" path="/importerPackHraccessForm.do" />
+        <forward name="resultatImportHraccess" path="/resultatImportHraccess.do" />
+        <forward name="versionnerPackHraccessForm" path="/versionnerPackHraccessForm.do" />
+        <forward name="resultatVersionningHraccess" path="/resultatVersionningHraccess.do" />
+    
+    </global-forwards>
+
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+        <!-- Test -->
+        <action path="/test"   forward="test" />
+        
+        <!-- Gestion Des Demandes -->
+        <action path="/definitionNouveauBesoin"   forward="definitionNouveauBesoin" />
+        <action path="/listeDesProjets"   forward="listeDesProjets" />
+        <action path="/specificationProjet"   forward="specificationProjet" />       
+        
+        <!-- En cours de construction -->
+        <action path="/pageEnCoursDeConstruction"   forward="pageEnCoursDeConstruction" />
+        
+        <!-- Accueil -->
+        <action name="LoginForm" path="/LoginForm" scope="request" type="strutsActions.ChargementParametresListesDeroulantes" validate="false"/> 
+        <action path="/login"   forward="login" />
+        <action path="/accueil"   forward="vueConsolidee" />
+        
+        <!-- Gestion des livraisons -->
+        <action path="/gestionDesLivraisonsOV"   forward="gestionDesLivraisons" />
+        <action path="/gestionDesLivraisonsIE"   forward="gestionDesLivraisonsIE" />
+        <action path="/gestionDesLivraisonsCDD"   forward="gestionDesLivraisonsCDD" />
+        <action name="getAllMilestonesForm" path="/getAllMilestonesForm" scope="request" type="strutsActions.GetAllMilestonesAction" validate="false"/>                  
+        <action name="createObjectFileForm" path="/createObjectFileForm" scope="request" type="strutsActions.CreateObjectFileAction" validate="false"/>
+        <action path="/analysePack"   forward="analysePack" />
+        <action name="deployerPackForm" path="/deployerPackForm" scope="request" type="strutsActions.DeployerPackAction" validate="false"/> 
+        <action path="/resultatDeploiementPack"   forward="resultatDeploiementPack" />
+        <action name="versionnerPackForm" path="/versionnerPackForm" scope="request" type="strutsActions.VersionnerPackAction" validate="false"/> 
+        <action path="/resultatVersionnerPack"   forward="resultatVersionnerPack" />
+        <action name="genererMessageTracForm" path="/genererMessageTracForm" scope="request" type="strutsActions.GenererMessageTracAction" validate="false"/> 
+        <action path="/resultatMessageTrac"   forward="resultatMessageTrac" />
+        
+        <!-- Comparaison de packs -->
+        <action name="VerificationDeltaForm" path="/VerificationDeltaForm" scope="request" type="strutsActions.ChargementParametresListesDeroulantes" validate="false"/> 
+        <action path="/VerificationDelta"   forward="ComparaisonPacks" />
+        <action name="VerificationDeltaDownloadPackForm" path="/VerificationDeltaDownloadPackForm" scope="request" type="strutsActions.ComparaisonPacksAction" validate="false"/> 
+        <action path="/ResultatComparaisonDelta"   forward="ResultatComparaisonDelta" />
+        
+        <!-- Download compressed packs -->
+        <action path="/DownloadComparaisonDelta"   forward="/pages/DownloadCompressedFolder.jsp"/>
+        
+        <!-- Former un pack -->
+        <action name="PreparationFormerUnPackForm" path="/PreparationFormerUnPackForm" scope="request" type="strutsActions.ChargementParametresListesDeroulantes" validate="false"/> 
+        <action path="/FormerUnPack"   forward="FormerUnPack" />        
+        <action name="FormerUnPackForm" path="/FormerUnPackForm" scope="request" type="strutsActions.FormerUnPackAction" validate="false"/> 
+        <action path="/ResultatCreerUnPack"   forward="ResultatCreerUnPack" /> 
+        
+        <!-- comparaison d'objets -->
+        <action name="PreparationComparaisonObjetsForm" path="/PreparationComparaisonObjetsForm" scope="request" type="strutsActions.ChargementParametresListesDeroulantes" validate="false"/> 
+        <action path="/ComparaisonObjets"   forward="ComparaisonObjets" /> 
+        <action name="ComparaisonObjetsForm" path="/ComparaisonObjetsForm" scope="request" type="strutsActions.ComparaisonObjetsAction" validate="false"/> 
+        <action path="/ResultatComparaisonObjets"   forward="ResultatComparaisonObjets" />
+        
+        <!-- étude d'intersection -->
+        <action name="EtudeIntersectionInputObjetsForm" path="/EtudeIntersectionInputObjetsPath" scope="request" type="strutsActions.ChargementParametresListesDeroulantes" validate="false"/> 
+        <action path="/EtudeIntersectionInputObjets"   forward="EtudeIntersectionInputObjets" />        
+        <action name="LancerEtudeIntersectionInputObjetsForm" path="/LancerEtudeIntersectionInputObjets"  type="strutsActions.EtudeIntersectionInputObjetsAction" /> 
+        <action path="/ResutatEtudeIntersection"   forward="ResutatEtudeIntersection" />
+        
+        <!-- Erreur Inexistance Objets -->
+        <action path="/AfficherMessageErreurs"   forward="AfficherMessageErreurs" /> 
+        
+        <!-- Deployer plusieurs packs sur plusieurs environnements -->
+        <action path="/InputDeployerNPacksSurNEnvironnements"   forward="InputDeployerNPacksSurNEnvironnements" />
+        <action name="LancerDeployerNPacksSurNEnvironnementsForm" path="/LancerDeployerNPacksSurNEnvironnementsForm" scope="request" type="strutsActions.DeployerNPacksSurNEnvironnementsAction" validate="false"/> 
+        <action path="/ResultatDeployerNPacksSurNEnvironnements" forward="ResultatDeployerNPacksSurNEnvironnements"/>
+        <action path="/MessageTracIntegration" forward="MessageTracIntegration"/>
+        
+        <!-- Administration: gestion de la base de données de paramètrages -->
+        <action path="/GestionBaseDonnesParametrages"   forward="GestionBaseDonnesParametrages" /> 
+        
+        <!-- Rporting SuiviReleaseEnCours--> 
+        <action path="/SuiviReleaseEnCours"   forward="SuiviReleaseEnCours" /> 
+        
+        <!-- SuiviDesHotfix> -->
+        <action path="/SuiviDesHotfix"   forward="SuiviDesHotfix" /> 
+        
+        <!-- AutorisationDesHotfix> -->
+        <action path="/AutorisationDesHotfix"   forward="AutorisationDesHotfix" /> 
+        
+        <!-- AutorisationDesTicketsMaintenance> -->
+        <action path="/AutorisationDesTicketsMaintenance"   forward="AutorisationDesTicketsMaintenance" />
+        
+        <!-- DelaisGestionIncident> -->
+        <action path="/DelaisGestionIncident"   forward="DelaisGestionIncident" /> 
+                
+        <!-- RelanceDesHotfix -->
+        <action path="/RelanceDesHotfix"   forward="RelanceDesHotfix" /> 
+        
+        <!-- JournalHfAppliquesProd> -->
+        <action path="/JournalHfAppliquesProd"   forward="JournalHfAppliquesProd" />
+                
+        <!-- Constitution Pack Multiprojets -->
+        <action path="/ConstitutionPackMultiprojets" forward="ConstitutionPackMultiprojets"/>
+        <action name="ConstitutionPackMultiprojetsForm" path="/ConstitutionPackMultiprojetsForm" scope="request" type="strutsActions.ConstitutionPackMultiprojetsAction" validate="false"/>
+        <action path="/ResultatConstitutionPackMultiprojets" forward="ResultatConstitutionPackMultiprojets"/>
+        
+        <!-- login page -->
+        <action path="/login"   forward="login" /> 
+        
+        <!-- workflow -->        
+        <action name="InitialisationWorkflowAdminForm" path="/workflow" scope="request" type="strutsActions.InitialisationWorkflowAdminAction" validate="false"/>
+        <action path="/WorkflowInterface"   forward="WorkflowInterface" />
+        
+        <!-- referentiel Objet -->        
+        <action path="/GestionReferentielObjet"   forward="GestionReferentielObjetInterface" /> 
+        
+        <!-- Gestion des groupes -->
+        <action path="/GestionGroupesUtilisateurs"   forward="GestionGroupesUtilisateurs" /> 
+        
+        <!-- Comparaison de packs -->
+        <action name="GestionLivraisonsInputPacksEnvIE_Form" path="/GestionLivraisonsInputPacksEnvIE_Form" scope="request" type="strutsActions.ChargementParametresListesDeroulantes" validate="false"/> 
+        
+        <!-- Administration: UserHasEnvironnement -->
+        <action name="InitialisationUserHasEnvironnementForm" path="/InitialisationUserHasEnvironnement" scope="request" type="strutsActions.ChargementParametresListesDeroulantes" validate="false"/>
+        <action path="/ResultatUserHasEnvironnement"   forward="ResultatUserHasEnvironnement" />
+        
+        <!-- Administration: UserHasGroupe -->
+        <action path="/UserHasGroupe"   forward="UserHasGroupe" />
+        
+        <!-- Acces au environnements -->
+        <action path="/AccesAuxEnvironnements"   forward="AccesAuxEnvironnements" />
+        
+        <!-- Clôture Tickets Anomalie -->
+        <action path="/ClotureTicketAnomalie"   forward="ClotureTicketAnomalie" />
+      
+        <!-- Administration: Fonctionnalités -->
+        <action path="/AdministrationFonctionnalite"   forward="AdministrationFonctionnalite" />
+        
+        <!-- Administration: Type Regle -->
+        <action path="/AdministrationContraintesIntegrite"   forward="AdministrationContraintesIntegrite" />
+        
+       <!-- Suivi COBs -->   
+       <action path="/SuiviCOBs"   forward="SuiviCOBs" />
+       
+       <!-- Cadencement -->   
+       <action name="CadencementDeltaForm" path="/CadencementDeltaForm" scope="request" type="strutsActions.CadencementDeltaAction" validate="false"/> 
+       <action path="/Cadencement"   forward="Cadencement" />
+       <action path="/ResultatCadencement"   forward="ResultatCadencement" />
+       <!-- TraitementLivraisonAutoForm -->
+       <action name="TraitementLivraisonAutoForm" path="/TraitementLivraisonAutoForm" scope="request" type="strutsActions.TraitementLivraisonAutoAction" validate="false"/> 
+       
+       <!-- +++++++++++++++++++++++++++ HRACCESS +++++++++++++++++++++++++++ -->
+       <!-- Rporting HR Access --> 
+       <action path="/StatistiquesnewTrac"   forward="StatistiquesnewTrac" /> 
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsHrAccess"   forward="accesAuxEnvironnementsHrAccess" />  
+       
+       <!-- +++++++++++++++++++++++++++ BFI CARTHAGO +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsBfiCarthago"   forward="accesAuxEnvironnementsBfiCarthago" />        
+       
+       <!-- +++++++++++++++++++++++++++ GTI WINSERGE +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsGtiWinserge"   forward="accesAuxEnvironnementsGtiWinserge" />        
+       
+       <!-- +++++++++++++++++++++++++++ Contentieux +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsContentieux"   forward="accesAuxEnvironnementsContentieux" />        
+
+       <!-- +++++++++++++++++++++++++++ BFI TITRE +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsBfiTitre"   forward="accesAuxEnvironnementsBfiTitre" /> 
+       
+       <!-- +++++++++++++++++++++++++++ Gestion Courrier +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsGestionCourrier"   forward="accesAuxEnvironnementsGestionCourrier" />   
+       
+       <!-- +++++++++++++++++++++++++++ Option Change +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsOptionChange"   forward="accesAuxEnvironnementsOptionChange" />
+       
+       <!-- +++++++++++++++++++++++++++ Prospection Tre +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsProspectionTre"   forward="accesAuxEnvironnementsProspectionTre" />
+       
+       <!-- +++++++++++++++++++++++++++ OGC +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsOGC"   forward="accesAuxEnvironnementsOGC" />        
+       
+       <!-- +++++++++++++++++++++++++++ Vue Consolidee +++++++++++++++++++++++++++ -->
+       <action path="/vueConsolidee"   forward="vueConsolidee" />        
+      
+       <!-- +++++++++++++++++++++++++++ Vue Consolidee Gestion des Incidents +++++++++++++++++++++++++++ -->
+       <action path="/vueConsolideeIncidentsParComposant"   forward="vueConsolideeIncidentsParComposant" />        
+       <!-- +++++++++++++++++++++++++++ Vue Consolidee Gestion des Incidents par Responsable+++++++++++++++++++++++++++ -->
+       <action path="/vueConsolideeIncidentsParResponsable"   forward="vueConsolideeIncidentsParResponsable" />            
+
+       <!-- +++++++++++++++++++++++++++ Vue Consolidee Gestion des Demandes +++++++++++++++++++++++++++ -->
+       <action path="/vueConsolideeDemandesParComposant"   forward="vueConsolideeDemandesParComposant" />        
+       
+       <!-- +++++++++++++++++++++++++++ ICR +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsICR"   forward="accesAuxEnvironnementsICR" />                      
+       
+       <!-- +++++++++++++++++++++++++++ MXP +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsMXP"   forward="accesAuxEnvironnementsMXP" />  
+       
+       <!-- +++++++++++++++++++++++++++ GD +++++++++++++++++++++++++++ -->
+       <!-- Accès aux environnements --> 
+       <action path="/accesAuxEnvironnementsGD"   forward="accesAuxEnvironnementsGD" />      
+        
+       <!-- Gestion des livraisons Hraccess-->
+        <action name="getAllTicketsHraccessForm" path="/getAllTicketsHraccessForm" scope="request" type="strutsActions.hrAccess.GetAllTicketsHraccessAction" validate="false"/>                  
+        <action path="/gestionDesLivraisonsHraccessOV"   forward="gestionDesLivraisonsHraccessOV" />
+        <action path="/gestionDesLivraisonsHraccessIE"   forward="gestionDesLivraisonsHraccessIE" />
+        <action name="exporterPackHraccessForm" path="/exporterPackHraccessForm" scope="request" type="strutsActions.hrAccess.ExporterPackHraccessAction" validate="false"/>        
+        <action path="/resultatExportHraccess"   forward="resultatExportHraccess" />
+        <action name="importerPackHraccessForm" path="/importerPackHraccessForm" scope="request" type="strutsActions.hrAccess.ImporterPackHraccessAction" validate="false"/> 
+        <action path="/resultatImportHraccess"   forward="resultatImportHraccess" /> 
+        <action name="versionnerPackHraccessForm" path="/versionnerPackHraccessForm" scope="request" type="strutsActions.hrAccess.VersionnerPackHraccessAction" validate="false"/>    
+        <action path="/resultatVersionningHraccess"   forward="resultatVersionningHraccess" />
+       
+    </action-mappings>
+
+
+<!-- ======================================== Message Resources Definitions -->
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+    <message-resources parameter="MessageResources" />
+
+
+<!-- =============================================== Plug Ins Configuration -->
+
+  <!-- ======================================================= Tiles plugin -->
+  <!--
+     This plugin initialize Tiles definition factory. This later can takes some
+	 parameters explained here after. The plugin first read parameters from
+	 web.xml, thenoverload them with parameters defined here. All parameters
+	 are optional.
+     The plugin should be declared in each struts-config file.
+       - definitions-config: (optional)
+            Specify configuration file names. There can be several comma
+		    separated file names (default: ?? )
+       - moduleAware: (optional - struts1.1)
+            Specify if the Tiles definition factory is module aware. If true
+            (default), there will be one factory for each Struts module.
+			If false, there will be one common factory for all module. In this
+            later case, it is still needed to declare one plugin per module.
+            The factory will be initialized with parameters found in the first
+            initialized plugin (generally the one associated with the default
+            module).
+			  true : One factory per module. (default)
+			  false : one single shared factory for all modules
+	   - definitions-parser-validate: (optional)
+	        Specify if xml parser should validate the Tiles configuration file.
+			  true : validate. DTD should be specified in file header (default)
+			  false : no validation
+
+	  Paths found in Tiles definitions are relative to the main context.
+
+      To use this plugin, download and add the Tiles jar to your WEB-INF/lib
+      directory then uncomment the plugin definition below.
+
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+
+        <set-property property="definitions-config"
+                         value="/WEB-INF/tiles-defs.xml" />
+        <set-property property="moduleAware" value="true" />
+      </plug-in>
+    -->  
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+
+    <!-- =================================================== Validator plugin -->
+    <!--
+        <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+            <set-property
+                property="pathnames"
+                value="/org/apache/struts/validator/validator-rules.xml,
+                   /WEB-INF/validation.xml"/>
+        </plug-in>
+    -->
+</struts-config>
+

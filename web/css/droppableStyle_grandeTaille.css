@@ -1,0 +1,152 @@
+
+
+#tableDeploiementEnMasse tr td{
+    vertical-align: top;
+    color: #35427E;
+}
+
+#tableDeploiementEnMasse .left {float: left;}
+#tableDeploiementEnMasse .right {float: right;}
+
+#tableDeploiementEnMasse .clear,.clearer {clear: both;}
+#tableDeploiementEnMasse .clearer {
+    display: block;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+}
+
+
+/*
+        Example specifics
+------------------------------------------------------------------- */
+
+/* Layout */
+#tableDeploiementEnMasse #center-wrapper-right {
+    background-color: white;    
+    display: table;
+    padding: 5px;   
+    border: 1px #343971 solid;   
+    border: 1px #343971 solid;    
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    float: left;
+    margin-left: 15px;
+
+}
+
+#tableDeploiementEnMasse #center-wrapper-left {
+    background-color: white;    
+    display: table;
+    padding: 5px;   
+    border: 1px #343971 solid;   
+    border: 1px #343971 solid;    
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    float: right;
+    margin-right: 15px;
+
+}
+
+#tableDeploiementEnMasse .conteneurDiv{
+    background-color: #FB9F00;
+    width: 300px;
+
+}
+/* Columns */
+
+#tableDeploiementEnMasse .columnWithoutMargin {
+    width: 110px;    
+}
+#tableDeploiementEnMasse .columnLeft {
+    margin-right: 5px;
+    width: 110px;    
+}
+#tableDeploiementEnMasse .columnRight {
+    width: 265px;    
+}
+#tableDeploiementEnMasse .first {margin-left: 0;}
+
+
+
+/* Sortable items */
+#tableDeploiementEnMasse .listeEnvironnements-right{
+    background-color: #FDD999;
+    list-style: none;
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 10px;   
+    border: 1px #343971 solid;   
+    border: 1px #343971 solid;    
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    text-align: center;
+    color: #35427E;
+    font-size: 19px;
+    width: 243px;  
+
+}
+
+#tableDeploiementEnMasse .listeEnvironnements-left{
+    background-color: #FDD999;
+    list-style: none;
+    margin: 0;
+    margin-bottom: 5px;
+    padding: 10px;   
+    border: 1px #343971 solid;    
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    text-align: center;
+    color: #35427E;
+    font-size: 19px;
+    width: 203px;  
+
+}
+
+#tableDeploiementEnMasse .sortable-list {
+    background-color: antiquewhite;
+    list-style: none;
+    margin: 0;
+    min-height: 37px;
+    padding: 10px;   
+    padding-bottom: 5px;
+    border: 1px #343971 solid;    
+    border-radius: 5px;    
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+
+}
+#tableDeploiementEnMasse .sortable-item {
+    background-color: white;
+    border: 1px solid #343971;
+    border-radius: 5px;    
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    cursor: move;
+    display: block;
+    margin-bottom: 5px;
+    padding: 5px 0;
+    text-align: center;
+    color: #35427E;
+    font-size: 16px;
+
+}
+
+
+
+/* Item placeholder (visual helper) */
+
+#tableDeploiementEnMasse .placeholder {
+    background-color: #FDD999;
+    border: 1px solid #343971;
+    border-radius: 5px;    
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    height: 30px;
+    margin-bottom: 5px;
+
+}

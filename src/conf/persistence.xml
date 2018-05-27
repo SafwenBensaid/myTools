@@ -1,0 +1,673 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+    <persistence-unit name="mysqlDataBasePU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesMysql.Audit</class>
+        <class>entitiesMysql.Environnement</class>
+        <class>entitiesMysql.Etudeintersection</class>
+        <class>entitiesMysql.Fonctionalite</class>
+        <class>entitiesMysql.Groupe</class>
+        <class>entitiesMysql.GroupeHasEnvironnement</class>
+        <class>entitiesMysql.GroupeHasFonctionalite</class>
+        <class>entitiesMysql.Niveauprojet</class>
+        <class>entitiesMysql.ObjetsHorsReferentiel</class>
+        <class>entitiesMysql.Parametres</class>
+        <class>entitiesMysql.Users</class>
+        <class>entitiesMysql.UsersHasEnvironnement</class>
+        <class>entitiesMysql.UsersHasGroupe</class>
+        <class>entitiesMysql.TypesRegle</class>
+        <class>entitiesMysql.NbrObjParPack</class>
+        <class>entitiesMysql.Livraison</class>
+        <class>entitiesMysql.Circuit</class>
+        <class>entitiesMysql.AuditAnomalie</class>
+        <class>entitiesMysql.DelaisGi</class>
+        <class>entitiesMysql.AuthMaintenance</class>
+        <class>entitiesMysql.Cadencement</class>
+        <class>entitiesMysql.Destinationparmilestone</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/ovtools?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="hibernate.connection.useUnicode" value="true" />
+            <property name="hibernate.connection.characterEncoding" value="UTF-8" />
+        </properties>
+    </persistence-unit>
+  
+    <persistence-unit name="dbTracHrAccessPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trachraccess?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="hraccess"/>
+        </properties>
+    </persistence-unit>
+  
+    <persistence-unit name="dbMxpPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tracmxp?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="mxp"/>
+        </properties>
+    </persistence-unit>
+  
+    <persistence-unit name="dbBfiCartagoIntranetPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_bfi?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="bfiCartagoIntranet"/>
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbContentieuxPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_contentieux?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="contentieux"/>
+        </properties>
+    </persistence-unit>
+  
+    <persistence-unit name="dbGtiWinsergePU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_gti_winsege?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="gtiWinserge"/>
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbOgcPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_ogc_compta?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="ogc"/>
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbGestionCourrierPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_gestion_courrier?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="trac_gestion_courrier"/>
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbOptionChangePU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_option_change?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="trac_option_change"/>
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbProspectionTrePU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_prospection_tre?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="trac_prospection_tre"/>
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbBfiTitrePU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_bfi_titre?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="bfiTitre"/>
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbLivraisonNewTracPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/traclivraisont24?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="traclivraisont24Newtrac"/>
+            <property name="hibernate.connection.useUnicode" value="true" />
+            <property name="hibernate.connection.characterEncoding" value="UTF-8" />
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbAnomalieNewTracPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tracanomaliet24?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="tracAnomalie24Newtrac"/>
+        </properties>
+    </persistence-unit>
+    
+    
+    <persistence-unit name="dbDavPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_dav?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="trac_dav"/>
+        </properties>
+    </persistence-unit>
+	
+    <persistence-unit name="dbProfilagePU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_profilage?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="trac_profilage"/>
+        </properties>
+    </persistence-unit>
+    
+    
+    <persistence-unit name="dbGestionIncidentsPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_gestion_incidents_si?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="trac_gestion_incidents"/>
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbGestionDesDemandesPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_gestion_demandes?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="trac_gestion_demandes"/>
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbGestionDesDemandesOvtoolsPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_gestion_demandes?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="hibernate.connection.useUnicode" value="true" />
+            <property name="hibernate.connection.characterEncoding" value="UTF-8" />
+        </properties>
+    </persistence-unit>
+    
+    <persistence-unit name="dbICRPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/trac_icr?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="trac_icr"/>
+        </properties>
+    </persistence-unit>
+    
+<persistence-unit name="dbFormationPU" transaction-type="RESOURCE_LOCAL">
+        <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+        <class>entitiesTrac.Attachment</class>
+        <class>entitiesTrac.AuthCookie</class>
+        <class>entitiesTrac.Cache</class>
+        <class>entitiesTrac.Component</class>
+        <class>entitiesTrac.Enum</class>
+        <class>entitiesTrac.Milestone</class>
+        <class>entitiesTrac.NodeChange</class>
+        <class>entitiesTrac.Permission</class>
+        <class>entitiesTrac.Report</class>
+        <class>entitiesTrac.Repository</class>
+        <class>entitiesTrac.Revision</class>
+        <class>entitiesTrac.Session</class>
+        <class>entitiesTrac.SessionAttribute</class>
+        <class>entitiesTrac.System</class>
+        <class>entitiesTrac.Ticket</class>
+        <class>entitiesTrac.TicketChange</class>
+        <class>entitiesTrac.TicketCustom</class>
+        <class>entitiesTrac.Version</class>
+        <class>entitiesTrac.Wiki</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/formation?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="eclipselink.target-database" value="MySQL"/>
+            <property name="eclipselink.logging.level" value="OFF"/>
+            <property name="eclipselink.canonicalmodel.subpackage" value="trac_formation"/>
+        </properties>
+    </persistence-unit>
+    
+    
+</persistence>

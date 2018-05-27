@@ -1,0 +1,245 @@
+.formError{
+    border: 1px solid red;
+    margin-bottom: 2px;
+}
+
+.SimplPack{
+    border: 1px solid #133783;
+    margin-bottom: 2px;
+}
+.ParamtablePere fieldset legend{    
+    padding-right: 7px;
+    padding-left: 7px;
+    color:#133783;    
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-color: #FDD999;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: left;
+} 
+.ParamtablePere fieldset legend .smallInput{    
+    width: 40px;
+    border-width:1px ;
+    height: 80%;
+} 
+.ParamtablePere fieldset .FirstColInput{    
+    width: 90px;
+    border-width:1px ;
+    height: 15px;
+}
+
+.ParamtablePere .contenu{
+    width: 783px;
+    font-size: 13px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #343971;
+}
+
+.ParamtablePere .contenu .tdContenu{
+    border-right: 1px #343971 solid;
+}
+
+.ParamtablePere .contenu .tdContenu:last-child{
+    border-right: none;
+}
+
+.ParamtablePere .titleOf{
+    color: #343971;
+    display: inline-block;
+    width: 60%;
+}
+
+.ParamtablePere .valueOf{
+    color: #888888;
+    margin-left: 0px;
+}
+
+.ParamtablePere .contenu tr td{
+    width: 33%;   
+}
+.ParamtablePere{
+    width:859px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.ParamtablePere tr:first-child{
+    margin-bottom: 2px;
+}
+
+.ParamtablePere fieldset{
+    background-color: #FDD999;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+
+}
+
+.ParamtablePereUser{
+    width:632px;
+    margin: auto;
+    border-spacing:0;
+}
+
+.ParamtablePereUser .valueOf, .ParamtablePereUser .tdContenu, .ParamtablePereUser .tdContenu select{
+    color: #777777;
+}
+
+.ParamtablePereUser th:nth-child(n+3),.ParamtablePereParam th:nth-child(n+3),.ParamtablePereNivProjet th:nth-child(n+3){
+    background-color: #FDD999;
+    border: 1px solid #133783; 
+    font-size:11px;
+    font-family: cambria, tahoma, arial , sans-serif;   
+    color : #343971;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-right-width:0px;
+}
+.ParamtablePereUser th:nth-child(3),.ParamtablePereParam th:nth-child(3),.ParamtablePereNivProjet th:nth-child(3){
+    border-top-left-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -moz-border-top-left-radius: 5px;
+
+}
+.ParamtablePereUser th:last-child,.ParamtablePereParam th:last-child,.ParamtablePereNivProjet th:last-child{
+    border-top-right-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    -moz-border-top-right-radius: 5px;
+    border-right-width: 1px;
+
+}
+
+.ParamtablePereUser td:nth-child(n+3),.ParamtablePereParam td:nth-child(n+3),.ParamtablePereNivProjet td:nth-child(n+3){
+    border: 1px solid #133783; 
+    text-align: left;
+    font-size:12px;
+    font-family: cambria, tahoma, arial , sans-serif;   
+    border-bottom-width: 0px; 
+    border-right-width:0px;
+    padding-left: 5px;
+    padding-right: 5px;
+
+}
+
+.ParamtablePereUser tr:last-child,.ParamtablePereParam tr:last-child,.ParamtablePereNivProjet tr:last-child{
+    border-bottom-width:  1px ;
+}
+
+.ParamtablePereUser td:last-child,.ParamtablePereParam td:last-child,.ParamtablePereNivProjet td:last-child{
+    border-top-width: 1px ;
+    border-right-width:  1px;
+}
+.ParamtablePereUser thead{
+    margin-top: 130px;
+}
+
+.ParamtablePereUser .imageContenu,.ParamtablePereParam .imageContenu,.ParamtablePereNivProjet .imageContenu{
+    width:24px;
+}
+
+.iconeContenu{
+    text-align: center;
+}
+
+.ParamtablePereParam td:nth-child(3){
+    color: #343971;
+}
+
+.ParamtablePereParam td:nth-child(4){
+    color: #777777;
+}
+
+.ParamtablePereUser .tdContenu .inputContenu{
+    width:132px;
+}
+
+.ParamtablePereUser tr:first-child td:nth-child(n+3),.ParamtablePereParam tr:first-child td:nth-child(n+3),.ParamtablePereNivProjet tr:first-child td:nth-child(n+3){
+    border-top-width: 0px;
+}
+.ParamtablePereUser .add .FormAddError,.ParamtablePereParam .add .FormAddError,.ParamtablePereNivProjet .add .FormAddError{
+    border-color: red;
+    border-top-width: 1px;
+}
+.ParamtablePereUser tr:last-child td:nth-child(n+3),.ParamtablePereParam tr:last-child td:nth-child(n+3),.ParamtablePereNivProjet tr:last-child td:nth-child(n+3){
+    border-bottom-width: 1px;    
+}
+
+.ParamtablePereParam{
+    width:800px;
+    margin: auto;
+    border-spacing:0;
+}
+.ParamtablePereParam .tdContenu .inputContenu:first-child{
+    width:97%;
+    margin: auto;
+}
+.ParamtablePereParam .tdContenu .inputContenu:last-child{
+    width:99%;
+    margin: auto;
+}
+
+.ParamtablePereNivProjet{
+    width:870px;
+    margin: auto;
+    border-spacing:0;
+    color: #777777;
+}
+
+.ParamtablePereNivProjet select{
+    color: #777777;
+}
+
+.ParamtablePereNivProjet td:nth-child(3),.ParamtablePereNivProjet th:nth-child(3){
+    width: 190px;
+}
+.ParamtablePereNivProjet th:nth-child(4){
+    width: 50px;
+}
+.ParamtablePereNivProjet td #abreviation,.ParamtablePereNivProjet .add .actif{
+    width: 50px;
+}
+
+.ParamtablePereNivProjet td #actif,.ParamtablePereNivProjet .add .actif{
+    width:30px;
+}
+
+.ParamtablePereNivProjet td #releaseprevue,.ParamtablePereNivProjet .add .releaseprevue{
+    width: 30px;
+}
+.ParamtablePereNivProjet .add .typeprojet{
+    width: 60px;
+}
+.ParamtablePereNivProjet td #typeprojet{
+    width: 95%;
+}
+.ParamtablePereNivProjet td #metier{
+    width: 98%;
+}
+.ParamtablePereNivProjet .add .sitedeveloppement{
+    width: 101px;
+}
+.ParamtablePereNivProjet td #sitedeveloppement{
+    width: 98%;
+    height: 22px;
+}
+.ParamtablePereNivProjet .add .nom{
+    width: 280px;
+}
+.ParamtablePereNivProjet td #nom{
+    width: 98%;
+}
+.ParamtablePereNivProjet .add .metier{
+    width: 140px;
+}
+
+.ParamtablePereUser .aff input,.ParamtablePereNivProjet .aff input{
+    width:96%;
+    height: 80%;
+}
+.emptyPadding{
+    display:inline-block;
+    min-width:80px;
+    min-height:16px;
+    cursor: pointer;
+}

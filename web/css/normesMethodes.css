@@ -1,0 +1,127 @@
+#__{
+    background-color: windowframe;
+}
+
+.cadreCentralParent{
+    border: 1px #343971 solid;          
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin: 2px;
+    text-align: center;
+    color: #35427E;
+    margin : auto;
+    width:750px;
+}
+
+.cadreCentral{
+    border: 1px #343971 solid;          
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin: 2px;
+    text-align: center;
+    color: #35427E;
+    margin : auto;
+    width:750px;
+    background: snow;
+}
+
+#tableReferentiel{
+    margin: auto;
+    table-layout: fixed;
+}
+
+
+#tableReferentiel thead tr{
+    display: block;
+    position: relative;
+}
+#tableReferentiel tbody{
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 400px;
+}
+
+
+#tableReferentiel th, 
+#tableReferentiel td { 
+    padding: 2px 5px 3px 5px; 
+    font-size: 13px;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #666666;
+    word-wrap: break-word;
+    overflow:hidden; 
+    white-space:nowrap;
+    vertical-align: middle;
+
+}
+
+#tableReferentiel th{
+    background-color: #FDD999;    
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #343971;
+}
+
+#tableReferentiel thead tr th, 
+#tableReferentiel tbody tr td { 
+    min-width: 190px; 
+    max-width: 190px; 
+}
+
+#tableReferentiel thead tr th:last-child, 
+#tableReferentiel tbody tr td:last-child { 
+    min-width: 400px; 
+    max-width: 400px; 
+}
+
+
+
+.boutonGenerer {
+    width: 250px;
+    height: 25px;
+    background-color: #FDD999;
+    border: 0px;
+    color: #35427E;
+    text-decoration: none;
+    font-family: Arial;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px;
+    cursor: pointer;
+}
+
+.boutonGenererPetit{
+    width: 100px;
+    height: 23px;
+    background-color: #FDD999;
+    border: 0px;
+    color: #35427E;
+    text-decoration: none;
+    font-family: Arial;
+    font-size: 16px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 5px;
+    -webkit-border-radius: 5px; 
+    -moz-border-radius: 5px; 
+    cursor: pointer;
+}
+
+.boutonGenerer:hover, .boutonGenererPetit:hover {    
+    background-color: #FB9F00;    
+}
+
+
+
+.titre1{
+    font-weight: bold;
+    color: #35427E;
+}

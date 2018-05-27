@@ -1,0 +1,256 @@
+#!/usr/bin/bash
+DT=` date "+%Y%m%d:%H.%M.%S" ` 
+CR=`echo $1|cut -c1-22`
+PASS2=0
+LOGIN="t24ass2"
+PASSWD="faten4"
+ENT="TASSMB2"
+COMP=$2
+USR=$3
+PASS=$4
+
+
+
+SEC=`ls $ENT*$CR.log |wc -l|sed 's/ //g'`
+
+#./CHECKBATCH $1  
+
+echo "-----------------COPIE DES FICHIERS---------------------"
+
+if [ "$1" = "" ] || [ "$2" = "" ]   ;
+then
+ echo "Veuillez verifier : un parametre est manquant ";
+ exit;
+else
+
+
+
+rm -r /APP/biatass2/bnk/bnk.run/PACK.TAF/TAF-$CR 
+cp -r /APP/biatass2/bnk/bnk.run/PACK.DEP/TAF-$1 /APP/biatass2/bnk/bnk.run/PACK.TAF/TAF-$CR
+
+echo "---------FICHIERS COPIES----------------------"
+
+#"\x16"
+
+DECIDE(){
+sed  's/[^a-zA-Z0-9.- ]//g' $ENT._$DT._$CR.$1|sed  's/[0-9][0-9]*H/#/g' |sed  's/[0-9][0-9]*K/#/g'|sed 's/[0-9][0-9]*m/#/g'|tr "#" "\n"|sed '/^$/ d'> $ENT._$DT._$CR.2.$1
+
+
+
+LERR=`cat $ENT._$DT._$CR.2.$1 | egrep -i " error | erreur | erreurs " |tail -1 `
+
+
+if [ "$LERR" = "" ]
+then
+  DECISION=1;   # ca avance
+  r="E"; 
+elif [ "$LERR" = "Aucune erreur pendant la restauration" ]
+then 
+  DECISION=0;  # cest bon
+  r="P";
+else
+  DECISION=2; # il ya des erreur
+  r="R";
+fi
+
+echo "$r">$ENT._$DT._$CR.temp
+ 
+}
+
+NETOYER(){
+cat $ENT._$DT._$CR.2.REST* >$ENT._$DT._$CR.log2;
+cat $ENT._$DT._$CR.REST* >$ENT._$DT._$CR.log;
+egrep  "RESTORE[0-9]|erreur" $ENT._$DT._$CR.log2 > $ENT._$DT._$CR.log3;
+rm  $ENT._$DT._$CR.*REST*;
+echo "#_#_#_# DEBUT RESULTAT #_#_#_#"
+cat $ENT._$DT._$CR.log3;
+echo "#_#_#_# FIN RESULTAT #_#_#_#"
+cat /APP/biatass2/bnk/bnk.run/"&SAVEDLISTS&"/TAF-$CR.PHASE* >$ENT._$DT._$CR.SAVL.log
+
+}
+
+RESTOR1(){
+
+(sleep 3;
+echo -e "$LOGIN\n";
+sleep 2;echo -e "$PASSWD\n\n";
+sleep 3;
+echo -e "ETS\nEX\n$USR\n";sleep 1;echo -e "$PASS\n";
+sleep 2;
+echo -e "$COMP\nPM\nI $CR\n\nPACK.TAF\n\nRESTORE1\nALL\n\x16\x16\n";
+
+DECIDE $1;
+while [ "$DECISION" = "1" ]
+do
+ sleep 3;
+ DECIDE $1;
+done;
+sleep 2;
+
+echo -e "\x15\n\x15\nLO\nLO\n";
+sleep 4;
+)|telnet 172.28.70.207|tee -a $ENT._$DT._$CR.$1
+
+
+}
+
+
+
+
+
+RESTOR11(){
+
+( sleep 3;
+echo -e "$LOGIN\n";
+sleep 2;echo -e "$PASSWD\n\n";
+sleep 3;
+echo -e "ETS\nEX\n$USR\n";sleep 1;echo -e "$PASS\n";
+sleep 2;
+echo -e "$COMP\nPM\nI $CR\n3\nPACK.TAF\n\nRESTORE1\nALL\n\x16\x16\n";
+
+DECIDE $1;
+while [ "$DECISION" = "1" ]
+do
+ sleep 3;
+ DECIDE $1;
+done;
+
+sleep 2;
+echo -e "\x15\n\x15\nLO\nLO\n";
+sleep 4;
+)|telnet 172.28.70.207|tee -a $ENT._$DT._$CR.$1
+
+}
+
+PASS2=0
+if [ "$SEC" = "0" ]
+then
+   RESTOR1 REST10;
+else
+   RESTOR11 REST10;
+fi
+
+r=`cat $ENT._$DT._$CR.temp |awk '{print $1}'`
+
+if [ "$r" = "R" ]
+then
+  RESTOR11 REST11
+  r=`cat $ENT._$DT._$CR.temp |awk '{print $1}'`
+  if [ "$r" = "R" ]
+  then
+     NETOYER
+     exit 1
+  elif [ "$r" = "P" ]
+  then
+    sleep 1
+  fi
+elif [ "$r" = "P" ]
+then
+  sleep 1
+fi
+
+
+
+RESTOR2(){
+
+(sleep 3;
+echo -e "$LOGIN\n";
+sleep 2;echo -e "$PASSWD\n\n";
+sleep 3;
+echo -e "ETS\nEX\n$USR\n";sleep 1;echo -e "$PASS\n";
+sleep 2;
+echo -e "$COMP\nPM\nI $CR\n3\nPACK.TAF\n\nRESTORE2\n\x16\x16\n";
+
+DECIDE $1;
+while [ "$DECISION" = "1" ]
+do
+ sleep 3;
+ DECIDE $1;
+done;
+
+sleep 2;
+echo -e "\x15\n\x15\nLO\nLO\n";
+sleep 4;
+)|telnet 172.28.70.207 |tee -a $ENT._$DT._$CR.$1
+
+}
+
+
+RESTOR2 REST20
+r=`cat $ENT._$DT._$CR.temp |awk '{print $1}'`
+if [ "$r" = "R" ]
+then
+  RESTOR2 REST21
+  r=`cat $ENT._$DT._$CR.temp |awk '{print $1}'`
+  if [ "$r" = "R" ]
+  then
+     NETOYER
+     exit 1
+  elif [ "$r" = "P" ]
+  then
+    sleep 1
+  fi
+elif [ "$r" = "P" ]
+then
+  sleep 1
+fi
+
+
+
+RESTOR3(){
+
+(sleep 3;
+echo -e "$LOGIN\n";
+sleep 2;echo -e "$PASSWD\n\n";
+sleep 3;
+echo -e "ETS\nEX\n$USR\n";sleep 1;echo -e "$PASS\n";
+sleep 2;
+echo -e "$COMP\nPM\nI $CR\n3\nPACK.TAF\n\nRESTORE3\n\x16\x16\n";
+
+DECIDE $1;
+while [ "$DECISION" = "1" ]
+do
+ sleep 3;
+ DECIDE $1;
+done;
+
+sleep 2;
+echo -e "\x15\n\x15\nLO\nLO\n";
+sleep 4;
+)|telnet 172.28.70.207|tee  -a $ENT._$DT._$CR.$1
+
+}
+
+
+
+RESTOR3 REST30
+
+
+PASS2=0;
+r=`cat $ENT._$DT._$CR.temp |awk '{print $1}'`
+
+if [ "$r" = "R" ]
+then
+  RESTOR3 REST31
+  r=`cat $ENT._$DT._$CR.temp |awk '{print $1}'`
+  if [ "$r" = "R" ]
+  then
+     NETOYER
+     exit 1
+  elif [ "$r" = "P" ]
+  then
+    NETOYER
+    exit 0
+  fi
+elif [ "$r" = "P" ]
+then
+  NETOYER
+  exit 0
+fi
+
+exit 2
+
+
+
+
+fi

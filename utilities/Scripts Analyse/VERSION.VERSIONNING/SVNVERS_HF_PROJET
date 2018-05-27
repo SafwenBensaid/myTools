@@ -1,0 +1,60 @@
+HOST=172.28.70.207;
+CHEMIN="/APP/biatass2/bnk/bnk.run/PACK.TAF";
+PACK="$1";
+LIV="$2";
+
+
+ 
+
+NBR=`rsh  $HOST ls -l $CHEMIN/$PACK |wc -l`
+NBR=`echo "$NBR - 1"|bc`
+DT=`date '+%y%m%d'`
+TM=`date '+%H%M'`
+
+MSG="$1 : $NBR obj(s) : $DT : $TM : #$2 : CP : HARM HOTFIX"
+
+if [ $NBR = "-1" ];
+then
+ echo "PACK INEXISTANT";
+ exit;
+else
+
+
+echo "Pour confirmer ce versionnig taper Y entree";
+read AA;
+
+if [ "$AA" != "Y" ];
+then
+exit;
+fi
+
+echo "Veuillez patienter";
+
+
+
+# ----------------------------versionning au niveau du depot_release (branche projet)-----------------------------------------------------
+
+#echo "TEST1";
+
+ cd /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/C.PROJET/TAF-FULLPACK/
+
+#echo "TEST2";
+
+ rsh $HOST ls $CHEMIN/$PACK|nawk -v HOST=$HOST -v CHEMIN=$CHEMIN -v PACK=$PACK -F -  '{print "if [ -d /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/C.PROJET/TAF-FULLPACK/"$1" ]; then rcp t24ass2@" HOST ":" CHEMIN "/" PACK "/" $0 " /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/C.PROJET/TAF-FULLPACK/" $1 "; else mkdir /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/C.PROJET/TAF-FULLPACK/" $1 "; rcp t24ass2@" HOST ":" CHEMIN "/" PACK "/" $0 " /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/C.PROJET/TAF-FULLPACK/" $1 ";fi"}'|bash
+
+
+
+
+
+ cd /VERSDATA/LWorkings/LW_RELEASE/depot_release/
+
+ svn add * --force
+ svn ci -m "$MSG"
+echo " VERSIONNING REUSSI $MSG"
+
+# ---------------------------------------------------------------------------------
+
+
+fi
+
+echo "END.VERSIONNING.PROCESS"

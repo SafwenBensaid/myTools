@@ -1,0 +1,259 @@
+#!/usr/bin/bash
+DT=` date "+%Y%m%d:%H.%M.%S" ` 
+CR=`echo $1|cut -c1-22`
+PASS2=0
+LOGIN=$2
+PASSWD=$3
+ENT="TDEVASS"
+USEBR=$4
+PASSWDBR=$5
+ADRESS=$6
+NOMENV=$7
+COMP=$8
+LOGENV=$9
+
+
+
+SEC=`ls ./newlogbig$LOGENV/$ENT*$CR.log |wc -l|sed 's/ //g'`
+
+#mv $ENT*$CR* ./newlogbig$LOGENV
+
+
+if [ "$1" = "" ] || [ "$2" = "" ]   ;
+then
+ echo "Veuillez verifier : un parametre est manquant ";
+ exit;
+else
+
+if test -d newlogbig$LOGENV; then echo 'FOLDER EXISTS'; else mkdir newlogbig$LOGENV;chmod 777 newlogbig$LOGENV ;fi
+
+#"\x16"
+
+
+DECIDE(){
+sed  's/[^a-zA-Z0-9.- ]//g' ./newlogbig$LOGENV/$ENT._$DT._$CR.$1|sed  's/[0-9][0-9]*H/#/g' |sed  's/[0-9][0-9]*K/#/g'|sed 's/[0-9][0-9]*m/#/g'|tr "#" "\n"|sed '/^$/ d'> ./newlogbig$LOGENV/$ENT._$DT._$CR.2.$1
+
+
+
+LERR=`cat ./newlogbig$LOGENV/$ENT._$DT._$CR.2.$1 | egrep -i " error | erreur | errors | erreurs " |tail -1 `
+
+
+if [ "$LERR" = "" ]
+then
+  DECISION=1;   # ca avance
+  r="E"; 
+elif [ "$LERR" = "Aucune erreur pendant la restauration" ]
+then 
+  DECISION=0;  # cest bon
+  r="P";
+else
+  DECISION=2; # il ya des erreur
+  r="R";
+fi
+
+echo "$r">./newlogbig$LOGENV/$ENT._$DT._$CR.temp
+ 
+}
+
+NETOYER(){
+cat ./newlogbig$LOGENV/$ENT._$DT._$CR.2.REST* >./newlogbig$LOGENV/$ENT._$DT._$CR.log2;
+cat ./newlogbig$LOGENV/$ENT._$DT._$CR.REST* >./newlogbig$LOGENV/$ENT._$DT._$CR.log;
+egrep  "RESTORE[0-9]|erreur" ./newlogbig$LOGENV/$ENT._$DT._$CR.log2 > ./newlogbig$LOGENV/$ENT._$DT._$CR.log3;
+rm  ./newlogbig$LOGENV/$ENT._$DT._$CR.*REST*;
+echo "#_#_#_# DEBUT RESULTAT #_#_#_#"
+cat ./newlogbig$LOGENV/$ENT._$DT._$CR.log3;
+/DEPT24/REMONTEE_ERREURS_DEPLOIEMENT/ANALYSE_ERREURS_DEPLOIEMENT TAF-$CR $NOMENV $ADRESS $LOGIN
+echo "#_#_#_# FIN RESULTAT #_#_#_#"
+rsh -l $LOGIN $ADRESS cat "/APP/$NOMENV/bnk/bnk.run/\&SAVEDLISTS\&/TAF-$CR.PHASE*" >./newlogbig$LOGENV/$ENT._$DT._$CR.SAVL.log
+
+}
+
+RESTOR1(){
+
+(sleep 3;
+echo -e "$LOGIN\n";
+sleep 5;echo -e "$PASSWD\n\n";
+sleep 3;
+echo -e "ETS\nEX\n$USEBR\n";sleep 1;echo -e "$PASSWDBR\n";
+sleep 2;
+echo -e "$COMP\nPM\nI $CR\n\x05\n3\nPACK.TAF\n\nRESTORE1\nALL\n\x16\x16\n";
+
+
+DECIDE $1;
+while [ "$DECISION" = "1" ]
+do
+ sleep 3;
+ DECIDE $1;
+done;
+sleep 2;
+
+echo -e "\x15\n\x15\nLO\nLO\n";
+sleep 4;
+)|telnet $ADRESS|tee -a ./newlogbig$LOGENV/$ENT._$DT._$CR.$1
+
+
+}
+
+
+
+
+
+RESTOR11(){
+
+( sleep 3;
+echo -e "$LOGIN\n";
+sleep 3;
+echo -e "$PASSWD\n\n";
+sleep 3;
+echo -e "ETS\nEX\n$USEBR\n";sleep 1;echo -e "$PASSWDBR\n";
+sleep 2;
+echo -e "$COMP\nPM\nI $CR\n\x05\n3\nPACK.TAF\n\nRESTORE1\nALL\n\x16\x16\n";
+
+
+DECIDE $1;
+while [ "$DECISION" = "1" ]
+do
+ sleep 3;
+ DECIDE $1;
+done;
+
+sleep 2;
+echo -e "\x15\n\x15\nLO\nLO\n";
+sleep 4;
+)|telnet $ADRESS|tee -a ./newlogbig$LOGENV/$ENT._$DT._$CR.$1
+
+}
+
+PASS2=0
+if [ "$SEC" = "0" ]
+then
+   RESTOR1 REST10;
+else
+   RESTOR11 REST10;
+fi
+
+r=`cat ./newlogbig$LOGENV/$ENT._$DT._$CR.temp |awk '{print $1}'`
+
+if [ "$r" = "R" ]
+then
+  RESTOR11 REST11
+  r=`cat ./newlogbig$LOGENV/$ENT._$DT._$CR.temp |awk '{print $1}'`
+  if [ "$r" = "R" ]
+  then
+     NETOYER
+     exit 1
+  elif [ "$r" = "P" ]
+  then
+    sleep 1
+  fi
+elif [ "$r" = "P" ]
+then
+  sleep 1
+fi
+
+
+
+RESTOR2(){
+
+(sleep 3;
+echo -e "$LOGIN\n";
+sleep 2;echo -e "$PASSWD\n\n";
+sleep 3;
+echo -e "ETS\nEX\n$USEBR\n";sleep 1;echo -e "$PASSWDBR\n";
+sleep 2;
+echo -e "$COMP\nPM\nI $CR\n\x05\n3\nPACK.TAF\n\nRESTORE2\n\x16\x16\n";
+
+
+DECIDE $1;
+while [ "$DECISION" = "1" ]
+do
+ sleep 3;
+ DECIDE $1;
+done;
+
+sleep 2;
+echo -e "\x15\n\x15\nLO\n";
+sleep 4;
+)|telnet $ADRESS |tee -a ./newlogbig$LOGENV/$ENT._$DT._$CR.$1
+
+}
+
+
+RESTOR2 REST20
+r=`cat ./newlogbig$LOGENV/$ENT._$DT._$CR.temp |awk '{print $1}'`
+if [ "$r" = "R" ]
+then
+  RESTOR2 REST21
+  r=`cat ./newlogbig$LOGENV/$ENT._$DT._$CR.temp |awk '{print $1}'`
+  if [ "$r" = "R" ]
+  then
+     NETOYER
+     exit 1
+  elif [ "$r" = "P" ]
+  then
+    sleep 1
+  fi
+elif [ "$r" = "P" ]
+then
+  sleep 1
+fi
+
+
+
+RESTOR3(){
+
+(sleep 3;
+echo -e "$LOGIN\n";
+sleep 2;echo -e "$PASSWD\n\n";
+sleep 3;
+echo -e "ETS\nEX\n$USEBR\n";sleep 1;echo -e "$PASSWDBR\n";
+sleep 2;
+echo -e "$COMP\nPM\nI $CR\n\x05\n3\nPACK.TAF\n\nRESTORE3\n\x16\x16\n";
+
+
+DECIDE $1;
+while [ "$DECISION" = "1" ]
+do
+ sleep 3;
+ DECIDE $1;
+done;
+
+sleep 2;
+echo -e "\x15\n\x15\nLO\nLO\n";
+sleep 4;
+)|telnet $ADRESS|tee  -a ./newlogbig$LOGENV/$ENT._$DT._$CR.$1
+
+}
+
+
+
+RESTOR3 REST30
+
+
+PASS2=0;
+r=`cat ./newlogbig$LOGENV/$ENT._$DT._$CR.temp |awk '{print $1}'`
+
+if [ "$r" = "R" ]
+then
+  RESTOR3 REST31
+  r=`cat ./newlogbig$LOGENV/$ENT._$DT._$CR.temp |awk '{print $1}'`
+  if [ "$r" = "R" ]
+  then
+     NETOYER
+     exit 1
+  elif [ "$r" = "P" ]
+  then
+    NETOYER
+    exit 0
+  fi
+elif [ "$r" = "P" ]
+then
+  NETOYER
+  exit 0
+fi
+
+exit 2
+
+
+
+fi

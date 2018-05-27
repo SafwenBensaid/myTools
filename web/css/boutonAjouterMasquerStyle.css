@@ -1,0 +1,46 @@
+.showhide {
+    position: relative; width: 25px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.showhide-checkbox {
+    display: none;
+}
+.showhide-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border: 2px solid #999999; border-radius: 20px;
+}
+.showhide-inner {
+    width: 200%; margin-left: -100%;
+    -moz-transition: margin 0.3s ease-in 0s; -webkit-transition: margin 0.3s ease-in 0s;
+    -o-transition: margin 0.3s ease-in 0s; transition: margin 0.3s ease-in 0s;
+}
+.showhide-inner:before, .showhide-inner:after {
+    float: left; width: 50%; height: 20px; padding: 0; line-height: 20px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+}
+.showhide-inner:before {
+    content: "-";
+    text-align: center;
+    background-color: #D8D8D8; color: #999999;
+}
+.showhide-inner:after {
+    content: "+";
+    background-color: #35427E; color: #FFFFFF;
+    text-align: center;
+}
+.-switch {
+    width: 18px; 
+    padding-left: 2px;
+    background: #FFFFFF;
+    border: 2px solid #999999; border-radius: 20px;
+    position: absolute; top: 0; bottom: 0; right: 48px;
+    -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+    -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s; 
+}
+.showhide-checkbox:checked + .showhide-label .showhide-inner {
+    margin-left: 0;
+}
+.showhide-checkbox:checked + .showhide-label .showhide-switch {
+    right: 0px; 
+}

@@ -1,0 +1,71 @@
+
+PACK="TAF-$1"
+DESTINATION="TAF-POST_$1"
+TABLE=`rsh -l t24inv 172.28.70.15 ls  /APP/biatinv/bnk/bnk.run/PACK.TAF/$PACK|grep ".FIELDS$"|cut -d- -f2|sed 's/.FIELDS//'`
+
+OBJET=`rsh -l t24inv 172.28.70.15 ls  /APP/biatinv/bnk/bnk.run/PACK.TAF/$PACK`
+
+
+if [ "$TABLE" != "" ];then
+
+        if  test  -d $DESTINATION;
+        then
+                rm -R $DESTINATION;
+        fi
+
+mkdir $DESTINATION
+
+for TAB in  $TABLE;
+do
+
+RES1=`find /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/C.UPGRADE/TAF-FULLPACK/*.BP|grep -v svn |xargs grep "I_F.$TAB"|cut -d: -f1`
+RES2=`ls /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/C.UPGRADE/TAF-FULLPACK/VERSION |grep "$TAB"|awk '{print "/VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/C.UPGRADE/TAF-FULLPACK/VERSION/"$1}'`
+RES3=`find /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/C.UPGRADE/TAF-FULLPACK/ENQUIRY|grep -v svn |xargs grep "$TAB"|cut -d: -f1`
+
+NRES1=""
+NRES2=""
+NRES3=""
+
+for ii in $RES1;do jj="`echo $ii |cut -d/ -f8`";  if [ "`echo $OBJET|grep $jj`" = "" ];then NRES1="$NRES1 $ii"; fi; done 
+for ii in $RES2;do jj="`echo $ii |cut -d/ -f8`";  if [ "`echo $OBJET|grep $jj`" = "" ];then NRES2="$NRES2 $ii"; fi; done 
+for ii in $RES3;do jj="`echo $ii |cut -d/ -f8`";  if [ "`echo $OBJET|grep $jj`" = "" ];then NRES3="$NRES3 $ii"; fi; done
+
+
+NRES1=`echo -e "$NRES1"|sed 's/  / /g' |sed 's/  / /g'`;
+NRES2=`echo -e "$NRES2"|sed 's/  / /g' |sed 's/  / /g'`;
+NRES3=`echo -e "$NRES3"|sed 's/  / /g' |sed 's/  / /g'`;
+
+if [ "$RES1" != "" ];then
+RES1=`echo -e $NRES1|tr " " "\n"|nawk -v DES=$DESTINATION '{print "cp",$1, DES}'`;
+echo -e "$RES1"|grep -v "^cp  $DESTINATION"|bash;
+fi
+if [ "$RES2" != "" ];then
+RES2=`echo -e $NRES2|tr " " "\n"|nawk -v DES=$DESTINATION '{print "cp",$1, DES}'`;
+echo -e "$RES2"|grep -v "^cp  $DESTINATION"|bash;
+fi
+if [ "$RES3" != "" ];then
+RES3=`echo -e $NRES3|tr " " "\n"|nawk -v DES=$DESTINATION '{print "cp",$1, DES}'`;
+echo -e "$RES3"|grep -v "^cp  $DESTINATION"|bash;
+fi
+
+
+
+done
+ 
+ILYA=`ls -l $DESTINATION|wc -l|sed 's/ //g'`
+if [ "$ILYA" = "1" ];then
+  rm -r $DESTINATION
+#  echo " Pas de Modification de Structure !!!!!";
+#echo "POSTPACK_OK";
+else
+#echo  "Modification de structure de table:"
+#echo  "Tous les objets qui se trouvent dans le Pack /work/$DESTINATION doivent etre relivres"
+ echo "X_XModification de structure de tableX_X";
+ 	for i in $(ls -A /work/$DESTINATION); do printf "__PP__";printf "$i"; echo "__PP__";done; 
+fi
+
+
+#else
+#echo " Pas de (.FIELDS) Modification de Structure !!!!! ";
+#echo "POSTPACK_OK";
+fi

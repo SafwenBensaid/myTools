@@ -1,0 +1,47 @@
+PACK="TAF-$1"
+
+TABLE=`rsh -l t24inv 172.28.70.15 ls  /APP/biatinv/bnk/bnk.run/PACK.TAF/$PACK|cut -d- -f1`
+
+OBJET=`rsh -l t24inv 172.28.70.15 ls  /APP/biatinv/bnk/bnk.run/PACK.TAF/$PACK`
+
+VAR=`rsh -l t24inv 172.28.70.15 ls  /APP/biatinv/bnk/bnk.run/PACK.TAF/$PACK|cut -d- -f2-|grep  "^I_"`
+
+NBR=`rsh -l t24inv 172.28.70.15 ls -l /APP/biatinv/bnk/bnk.run/PACK.TAF/$PACK|wc -l`
+
+
+NBRR=$((NBR - 1))
+
+
+
+
+echo -e "#_#$NBRR#_#"
+
+# for TAB in  $TABLE;
+# do
+# echo -e $TAB
+# done
+
+#for VV in  $VAR;
+#do
+ #if [ "$VV" != "" ];then
+#echo " il y a un I_ dans le pack : $VV ";
+#fi;
+#done
+
+
+for lig in  `cat ContrainteIntg`
+do
+
+for ii in $TABLE;
+do
+PP=`echo $ii |grep $lig|sed "s/ //g"`;
+
+# echo "--$ii - $lig - $PP --";
+
+ if [ "$PP" != "" ];then 
+echo -e 'O_O'$PP'O_O'; 
+fi; 
+done
+
+done
+

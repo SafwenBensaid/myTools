@@ -1,0 +1,10 @@
+(
+  echo From: OV.Management.Solutions@biat.com.tn 
+  echo To: FETHIC@biat.com.tn abdelhakim.sidhom@biat.com.tn mongi.guesmi@biat.com.tn ghassen.benmustapha@biat.com.tn riadh.bendakhlia@biat.com.tn sinda.rahmouni@biat.com.tn
+  echo Cc: C24OV@biat.com.tn CH_DirProj@biat.com.tn CH_Metier@biat.com.tn Pilier.technique@biat.com.tn
+  echo "Content-Type: text/html; "
+  echo Subject: $1 HOTFIX à passer ce soir sur PROD 
+  echo
+ (cat ./corpsEmailnotificationHotfixEnvoyesProd| sed  "s/NBR_HOTFIX/$1/g"  
+  )
+) | sendmail -t

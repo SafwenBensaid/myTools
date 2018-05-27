@@ -1,0 +1,85 @@
+
+PACK="TAF-$1"
+
+CHPK="172.28.70.15:/APP/biatass/bnk/bnk.run/PACK.TAF/$PACK"
+
+DESTINATION="TAF-NP_$1"
+TABLE=`rsh -l t24ass 172.28.70.15 ls  /APP/biatass/bnk/bnk.run/PACK.TAF/$PACK|cut -d- -f2-|grep  "^I_"| grep -v "^I_F."`
+
+OBJET=`rsh -l t24ass 172.28.70.15 ls  /APP/biatass/bnk/bnk.run/PACK.TAF/$PACK`
+
+LESAUTRE=""
+
+if [ "$TABLE" != "" ];then
+
+        if  test  -d $DESTINATION;
+        then
+                rm -R $DESTINATION;
+        fi
+
+mkdir $DESTINATION
+
+for TAB in  $TABLE;
+do
+
+RES1=`find /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/C.RELEASE.R6/QL1/TAF-FULLPACK/*.BP|grep -v svn |xargs grep "$TAB"|cut -d: -f1`
+
+
+#echo "$RES1 -----------------------------------"
+
+
+LESAUTRE=""
+NRES1=""
+
+for ii in $RES1;do jj="`echo $ii |cut -d/ -f10`";  
+   if [ "`echo $OBJET|grep $jj`" = "" ]
+   then 
+      NRES1="$NRES1 $ii"
+   else
+#      echo "8888 $LESAUTRE 8888"
+      LESAUTRE="$LESAUTRE $ii"
+   fi 
+done 
+
+
+NRES1=`echo -e "$NRES1"|sed 's/  / /g' |sed 's/  / /g'`;
+
+LESAUTRE=`echo -e "$LESAUTRE"|sed 's/  / /g' |sed 's/  / /g'`;
+
+if [ "$RES1" != "" ];then
+RES1=`echo -e $NRES1|tr " " "\n"|nawk -v DES=$DESTINATION '{print "cp",$1, DES}'`;
+echo -e "$RES1"|grep -v "^cp  $DESTINATION"|bash;
+fi
+
+
+if [ "$LESAUTRE" != " " ];then
+
+#echo "$LESAUTRE" 
+#echo  DES $DESTINATION
+#echo PK $CHPK 
+
+LESAUTRE=`echo -e $LESAUTRE|tr " " "\n"|grep -v "^$" |cut -d/ -f11|nawk -v DES=$DESTINATION -v PK=$CHPK '{print "rcp ",PK"/"$1, DES}'`;
+echo -e "$LESAUTRE"|bash;
+fi
+
+
+
+done
+ 
+ILYA=`ls -l $DESTINATION|wc -l|sed 's/ //g'`
+if [ "$ILYA" = "1" ];then
+  rm -r $DESTINATION
+#  echo " Pas de I_ !!!!!";
+#echo "NEWPOSTPACK_OK";
+else
+echo "X_XDependance de programmesX_X";
+#echo  "Existence de dependances de programmes:"
+#echo  "Tous les objets qui se trouvent dans le Pack /work/$DESTINATION doivent etre relivres"
+for i in $(ls -A $DESTINATION); do printf "__NPP__";printf "$i"; echo "__NPP__";done; 
+fi
+
+
+#else
+#echo " Pas de I_  !!!!!";
+#echo "NEWPOSTPACK_OK";
+fi

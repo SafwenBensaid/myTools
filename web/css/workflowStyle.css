@@ -1,0 +1,73 @@
+#tablePrincipaleWorkFlow{
+    width: 825px;
+    margin: auto;
+    margin-bottom: 25px;
+}
+
+#tablePrincipaleWorkFlow .grandTitrePage{
+    font-size: 22px;
+    color: #35427E;
+    text-align: center;
+    height: 50px;
+}
+
+.cadre{
+    border: 1px #343971 solid;          
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin: 2px;
+    text-align: center;
+    color: #35427E;
+}
+
+.cadre .petitTitre{
+    margin: 10px;
+    font-weight: bold;
+}
+
+.cadre .case{
+    text-align: center;        
+    height: 23px;
+    margin: auto;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+
+.cadre .moyenne{
+    width: 420px;
+}
+.cadre .longue{
+    width: 810px;
+    text-align: left;
+}
+.cadre .longue td{
+    width: 265px;
+    padding-left: 5px;
+}
+.cadre .case .titre{
+    margin-left: 80px;
+    float: left;
+    vertical-align: middle; 
+    padding-top: 2px;
+
+}
+.cadre .case .bouton{
+    float: right;
+    vertical-align: middle;
+}
+#timeSelector input{
+    width: 70px;
+}
+
+
+#tableCircuits{
+    width: 817px;
+}
+
+#tableCircuits th, 
+#tableCircuits td { 
+    width: 271px;
+    padding: 5px 5px 6px 5px; 
+}

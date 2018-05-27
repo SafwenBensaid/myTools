@@ -1,0 +1,112 @@
+
+
+
+DIR="/APP/biatass2/bnk/bnk.run/PACK.TAF"
+NAME=`ls /APP/biatass2/bnk/bnk.run/PACK.TAF/TAF-$1`
+PACK="TAF-$1"
+
+#echo "DIR :  $DIR"
+#echo "NAME:  $NAME"
+#echo "PACK:  $PACK"
+
+
+
+NBCTRL=`echo  -e "$NAME" |egrep -e "^FILE.CONTROL" |wc -l|sed 's/ //g'`
+
+if [ "$NBCTRL" = "0" ]
+then
+ echo "PAS DE FILE.CONTROL DANS LE PACK"
+
+else
+
+
+# TABLE=`ls /APP/biatass2/bnk/bnk.run/PACK.TAF/TAF-$1|grep "FILE.CONTROL"|cut -d- -f2`
+
+# echo "LE NOM DE LA TABLE EST $TABLE"
+
+FLC=`ls /APP/biatass2/bnk/bnk.run/PACK.TAF/TAF-$1/FILE.CONTROL* `
+#echo "*********FLC $FLC *********************"
+
+
+
+#FLC=`echo  -e "$NAME" |egrep -e "^FILE.CONTROL" `
+#echo "FLC $FLC"
+
+rm -r $DIR/TAF-$1.BNK  >NUL 2>&1
+rm -r $DIR/TAF-$1.TN1  >NUL 2>&1
+mkdir $DIR/TAF-$1.BNK
+
+
+for FL in  $FLC;
+do
+
+#echo " OBJET: $FL "
+CLASS=`head -6 $FL | tail -1`
+#echo "CLASS $CLASS  "
+
+if [ "$CLASS" != "CUS" ]
+then
+
+echo " LE FILE.CONTROL $FL est de type $CLASS"
+echo "******************************************************************"
+
+else
+echo "******************************************************************"
+echo "******************************************************************"
+
+echo "ATTENTION : le FILE.CONTROL $FL est de type CUS "
+
+TABLE=`echo $FL|cut -d- -f3`
+echo "LA TABLE CORRESPENDANTE EST : $TABLE"
+
+RES1=`find $DIR/$PACK/*-$TABLE 2>/dev/null`
+RES2=`find $DIR/$PACK/*-I_F.$TABLE 2>/dev/null`
+RES3=`find $DIR/$PACK/*-$TABLE.FIELDS 2>/dev/null`
+
+
+#echo "RES1  $RES1"
+#echo "RES2  $RES2"
+#echo "RES3  $RES3"
+
+if [ "$RES1" != "" ];then
+for R1 in  $RES1;
+do
+mv $R1 $DIR/TAF-$1.BNK
+done
+fi
+
+
+if [ "$RES2" != "" ];then
+for R2 in  $RES2;
+do
+mv $R2 $DIR/TAF-$1.BNK
+done
+fi
+
+if [ "$RES3" != "" ];then
+for R3 in  $RES3;
+do
+mv $R3 $DIR/TAF-$1.BNK
+done
+fi
+
+
+
+
+fi
+
+
+done
+
+NBF=`ls $DIR/TAF-$1.BNK|wc -l|sed 's/ //g'`
+#echo "NBF : $NBF "
+if [ "$NBF" = "0" ]
+then
+rm -r  $DIR/TAF-$1.BNK 
+else 
+echo "un pack TAF-$1.BNK a ete cree sous $DIR "
+mv $DIR/TAF-$1 $DIR/TAF-$1.TN1
+echo " ce pack doit etre deploye avec la master company BNK "
+fi
+
+fi

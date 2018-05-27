@@ -1,0 +1,40 @@
+#!/bin/bash
+echo '#####START_ANALYSE_PACK#####';
+
+
+HM=$(./VERIF_HM_$2 $1 | sed 's/ *$//g');
+if [[ $HM == *"Un EB.COMPOSITE.SCREEN existe dans le MENU"* ]] ;
+then
+#        echo '<center><b>****VERIF_HM****</b></center>';
+#         echo $HM;
+echo -e "\n";
+         echo -e  '\nX_XUn EB.COMPOSITE.SCREEN existe dans le MENUX_X';
+fi
+
+
+CUS=$(./VERIF_CUS_$2 $1 | sed 's/ *$//g');
+if [[ $CUS == *"est de type CUS"* ]] ; 
+then
+#	echo -e '<center><b>****VERIF_CUS****</b></center>';
+#        echo -e 'FILE.CONTROL de type CUS existe dans le pack';
+#        echo -e '\n2 packs ont été générés:';
+#        echo -e '\n<b>TAF-' $1'.TN1</b>';
+#        echo -e '\n<b>TAF-' $1'.BNK</b>';
+
+         echo -e 'X_XFILE.CONTROL de type CUSX_X'; 
+
+        PACKVIDE=$(ls -A /APP/biatass/bnk/bnk.run/PACK.TAF/TAF-$1.TN1/)
+	if [ "$PACKVIDE" == "" ]; 
+        then  
+            echo 'X_XLe pack TAF-PACK.NAME.TN1 est videX_X';
+		else
+			for i in $(ls -A /APP/biatass/bnk/bnk.run/PACK.TAF/TAF-$1.BNK/); do printf "__BNK__";printf "$i"; echo "__BNK__";done; 
+			for i in $(ls -A /APP/biatass/bnk/bnk.run/PACK.TAF/TAF-$1.TN1/); do printf "__TN1__";printf "$i"; echo "__TN1__";done; 
+        fi
+ 
+fi
+
+
+echo '#####END_ANALYSE_PACK#####';
+echo '#####END_ANALYSE_PACK#####';
+echo '#####END_ANALYSE_PACK#####';

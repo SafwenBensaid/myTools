@@ -1,0 +1,140 @@
+
+.roundCornerTable{
+    border: 1px solid #343971;
+    border-collapse: separate;
+    border-left: 0;
+    border-radius: 5px;
+    border-spacing: 0px;
+    z-index: 1;
+}
+
+.roundCornerTable .titre td{
+    background-image: url("../images/menu_icons/bouton.png");
+    font-weight: bold;
+    padding-left: 25px;
+    color: #35427E !important;
+    font-family: Steinerlight,Arial, Helvetica, sans-serif !important;
+    font-size: 11px;
+}
+
+.roundCornerTable thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+    border-collapse: separate;
+}
+
+.roundCornerTable tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.roundCornerTable th, 
+.roundCornerTable td {
+
+    text-align: left;
+    vertical-align: top;
+    border-left: 1px solid #343971;
+    font-weight: normal;
+}
+
+.roundCornerTable td {
+    border-top: 1px solid #343971;    
+}
+
+.roundCornerTable thead:first-child tr:first-child th:first-child, 
+.roundCornerTable tbody:first-child tr:first-child td:first-child {
+    border-radius: 5px 0 0 0;
+}
+
+.roundCornerTable thead:last-child tr:last-child th:first-child, 
+.roundCornerTable tbody:last-child tr:last-child td:first-child {
+    border-radius: 0 0 0 5px;
+}
+
+.roundCornerTable thead tr:first-child th:last-child{
+    border-radius: 0px 5px 0px 0px;
+}
+
+.roundCornerTable tbody tr:last-child td:last-child{
+    border-radius: 0px 0px 5px 0px;
+}
+
+
+.roundCornerTableWithButtons{
+    border-collapse: separate;
+    border-left: 0;
+    border-radius: 5px;
+    border-spacing: 0px;
+    margin:0 auto;        
+}
+
+
+.roundCornerTableWithButtons thead {
+    display: table-header-group;
+    vertical-align: middle;
+    border-color: inherit;
+    border-collapse: separate;
+}
+
+.roundCornerTableWithButtons tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+
+.roundCornerTableWithButtons th, 
+.roundCornerTableWithButtons td {    
+    text-align: left;
+    vertical-align: top;
+    font-weight: normal;
+    padding-top: 2px;
+    padding-left: 5px;
+    font-size: 12px;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #666666;
+}
+
+.roundCornerTableWithButtons th:nth-of-type(n+3), 
+.roundCornerTableWithButtons td:nth-of-type(n+3) {
+    border-left: 1px solid #343971;
+}
+
+.roundCornerTableWithButtons td:nth-of-type(n+3) {
+    border-top: 1px solid #343971;    
+}
+
+.roundCornerTableWithButtons thead:first-child tr:first-child th:nth-child(3), 
+.roundCornerTableWithButtons tbody:first-child tr:first-child td:first-child {
+    border-radius: 5px 0 0 0;
+}
+
+
+
+.roundCornerTableWithButtons thead:first-child tr:first-child th:last-child{
+    border-radius: 0px 5px 0px 0px;
+}
+
+
+.roundCornerTableWithButtons thead tr th:last-child, 
+.roundCornerTableWithButtons tbody:last-child tr td:last-child {
+    border-right: 1px solid #343971;
+}
+
+.roundCornerTableWithButtons thead tr:first-child th:nth-of-type(n+3){
+    border-top: 1px solid #343971;
+}
+
+.roundCornerTableWithButtons tbody tr:last-child td:nth-of-type(n+3){
+    border-bottom: 1px solid #343971;
+}
+
+.roundCornerTableWithButtons thead tr th:nth-of-type(n+3){
+    background-color: #FDD999;
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #343971;
+}

@@ -1,0 +1,77 @@
+<style type='text/css'>
+    .thTable, .tdTable{
+        border-left: 1px solid #35427E;
+        border-top: 1px solid #35427E;
+    }
+    table{
+        border-right: 1px solid #35427E;
+        border-bottom: 1px solid #35427E;
+        font-size:13px;
+    }
+    a{
+        text-decoration: underline;
+        cursor: pointer;
+        color:#1e0fbe;
+    }
+    .message{
+        color: #666666;
+    }
+</style>
+<p class='message'>
+    Bonsoir,
+</p>
+<p class='message'>Deux HOTFIX à passer ce soir sur PROD:
+</p>
+
+<table cellspacing='0' cellpadding='5' >
+    <thead>
+        <tr style='background-color: #FDD999; color: #35427E'>
+            <th class='thTable'>Anomalie</th>
+            <th class='thTable'>Livraison</th>
+            <th class='thTable'>Summary</th>
+            <th class='thTable'>Milestone</th>
+            <th class='thTable'>Priority</th>
+            <th class='thTable'>Owner</th>
+            <th style='padding: 0px;border: none'></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr style='background-color: #faebd7; color: #666666'>
+            <td class='tdTable'><a href='http://172.28.70.7/testing_t24/ticket/24888' >#24888</a></td>
+            <td class='tdTable'><a href='http://172.28.70.74/trac/livraisons_t24/ticket/17670' >#17670</a></td>
+            <td class='tdTable' style='max-width: 500px'>Ouverture nouvelle agence (S9 : AGENCE DENDEN)
+            </td>
+            <td class='tdTable'>DOMAINES TRANSVERSES</td>
+            <td class='tdTable'>QUALIFIEE</td>
+            <td class='tdTable'>sami.fe</td>
+            <td style='padding: 0px;border: none'></td>
+        </tr>
+        <tr style='background-color: #faebd7; color: #666666'>
+            <td class='tdTable'><a href='http://172.28.70.7/testing_t24/ticket/25019' >#25019</a></td>
+            <td class='tdTable'><a href='http://172.28.70.74/trac/livraisons_t24/ticket/17945' >#17945</a></td>
+            <td class='tdTable' style='max-width: 500px'>Paramétrage AG 20 au centre Back Office de Tunis
+            </td>
+            <td class='tdTable'>DOMAINE MOYENS DE PAIEMENT</td>
+            <td class='tdTable'>QUALIFIEE</td>
+            <td class='tdTable'>rym.ben.ayed.mhiri</td>
+            <td style='padding: 0px;border: none'></td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<p style='font-size: 11px;color:#1f497d'>
+    Ceci est un message automatique, merci de ne pas y répondre.
+</p>
+--
+<p style='margin:0cm;margin-bottom:.0001pt;background:white'>
+    <b>
+        <span style='font-size:9.0pt;font-family:Arial,sans-serif;color:#1f497d'>
+            OV Management Solutions
+        </span>
+    </b>
+</p>
+<p style='margin:0cm 0cm 0.0001pt;background-color:white;background-repeat:initial'>
+    <span style='font-size:10.0pt;font-family:Arial,sans-serif;color:#1f497d'>
+        Direction Méthodes et Outils
+    </span>
+</p>

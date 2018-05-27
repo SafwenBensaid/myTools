@@ -1,0 +1,9 @@
+(
+  echo From: OV.Management.Solutions@biat.com.tn 
+  echo To: anis.moalla@biat.com.tn
+  echo "Content-Type: text/html; "
+  echo Subject: $1 HOTFIX à passer ce soir sur PROD 
+  echo
+ (cat ./corpsEmailnotificationHotfixEnvoyesProd| sed  "s/NBR_HOTFIX/$1/g"  
+  )
+) | sendmail -t

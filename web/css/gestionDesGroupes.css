@@ -1,0 +1,113 @@
+
+#tableDroitsEnvironnements th, 
+#tableDroitsEnvironnements td { 
+    padding: 2px 5px 3px 5px; 
+    font-size: 12px;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #666666;
+    word-wrap: break-word;
+    overflow:hidden; 
+    white-space:nowrap;
+}
+
+#tableDroitsEnvironnements th{
+    background-color: #FDD999;    
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #343971;
+}
+
+#tableDroitsEnvironnements thead:first-child tr th, 
+#tableDroitsEnvironnements tbody:first-child tr td { 
+    width: 150px; 
+}
+
+#tableDroitsEnvironnements thead:first-child tr th:nth-child(2), 
+#tableDroitsEnvironnements tbody:first-child tr td:nth-child(2) { 
+    width: 90px; 
+}
+
+
+
+
+
+
+
+
+#tableDroitsFonctionnalites{
+    table-layout: fixed;
+}
+#tableDroitsFonctionnalites thead tr{
+    display: block;
+    position: relative;
+}
+#tableDroitsFonctionnalites tbody{
+    display: block;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 500px;
+}
+
+
+#tableDroitsFonctionnalites th, 
+#tableDroitsFonctionnalites td { 
+    padding: 2px 5px 3px 5px; 
+    font-size: 12px;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #666666;
+    word-wrap: break-word;
+    overflow:hidden; 
+    white-space:nowrap;
+}
+
+#tableDroitsFonctionnalites th{
+    background-color: #FDD999;    
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #343971;
+}
+
+#tableDroitsFonctionnalites thead tr th, 
+#tableDroitsFonctionnalites tbody tr td { 
+    min-width: 400px; 
+    max-width: 400px;
+}
+
+#tableDroitsFonctionnalites thead tr th:nth-child(2), 
+#tableDroitsFonctionnalites tbody tr td:nth-child(2) { 
+    min-width: 90px; 
+    max-width: 90px; 
+}
+
+#tableDroitsFonctionnalites .titre td{
+    background-image: url("../images/menu_icons/bouton.png");
+    font-weight: bold;
+    padding-left: 25px;
+}
+
+
+
+
+
+#tableInscription th, 
+#tableInscription td { 
+    padding: 2px 5px 3px 5px; 
+    font-size: 12px;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #666666;
+    word-wrap: break-word;
+    overflow:hidden; 
+    white-space:nowrap;
+    width: 157px;
+}
+
+.titre{
+    text-align: center;
+    font-weight: bold;
+    font-size: 19px;
+    color: #35427E;
+}

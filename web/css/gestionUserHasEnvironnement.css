@@ -1,0 +1,57 @@
+#ParamtablePereUserHasEnvironnement{
+    width: 738px;
+    margin: auto;
+
+}
+
+#ParamtablePereUserHasEnvironnement th, 
+#ParamtablePereUserHasEnvironnement td { 
+
+    font-size: 12px;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #666666;
+
+}
+
+#ParamtablePereUserHasEnvironnement th{
+    text-align: center;
+    font-size: 12px;
+    font-weight: bold;
+    font-family: cambria, tahoma, arial , sans-serif;
+    color: #343971;
+}
+
+#ParamtablePereUserHasEnvironnement thead:first-child tr th, 
+#ParamtablePereUserHasEnvironnement tbody:first-child tr td { 
+    width: 150px; 
+}
+
+#ParamtablePereUserHasEnvironnement thead:first-child tr .imageContenu{ 
+    width: 24px;   
+}
+
+
+#ParamtablePereUserHasEnvironnement tbody .tdContenu{ 
+    padding-top: 2px;
+
+
+}
+
+.separationTd{
+    height: 0px;
+    color: #666786;    
+}
+
+select[id=env]{
+    width: 150px;
+}
+
+#UserHasGroup thead:first-child tr th, 
+#UserHasGroup tbody:first-child tr td { 
+    width: 150px; 
+}
+
+#UserHasGroup thead:first-child tr .imageContenu{ 
+    width: 24px;   
+}
+

@@ -1,0 +1,59 @@
+HOST=172.28.70.15;
+CHEMIN="/APP/biatass/bnk/bnk.run/PACK.TAF";
+PACK="$1";
+LIV="$2";
+PRG="$3";
+
+if [ $PRG = "" ];
+then
+ echo "PARAM PROJET INEXISTANT";
+ exit;
+fi
+
+
+
+ 
+
+NBR=`rsh  $HOST ls -l $CHEMIN/$PACK |wc -l`
+NBR=`echo "$NBR - 1"|bc`
+DT=`date '+%y%m%d'`
+TM=`date '+%H%M'`
+
+
+MSG="$1: $NBR obj(s) au $DT : $TM Liv #$2 CP: $3"
+MSG3="$1: $NBR obj(s) au $DT : $TM HARM HOTFIX #$2 BI: $3"
+MSG2="$1 : $NBR obj(s) : $DT : $TM : #$2 : BI : HARM HOTFIX $3"
+
+
+if [ $NBR = "-1" ];
+then
+ echo "PACK INEXISTANT";
+ exit;
+else
+
+
+if [ -d /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/DELTA.PROJET/"$3" ];
+then
+
+cd /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/DELTA.PROJET/$3/
+ svn update
+ cd /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/DELTA.PROJET/$3/TAF-FULLPACK/
+
+
+rsh $HOST ls $CHEMIN/$PACK|nawk -v HOST=$HOST -v CHEMIN=$CHEMIN -v PRG=$PRG -v PACK=$PACK -F -  '{print "if [ -d /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/DELTA.PROJET/"PRG"/TAF-FULLPACK/"$1" ]; then rcp t24ass@" HOST ":" CHEMIN "/" PACK "/" $0 " /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/DELTA.PROJET/"PRG"/TAF-FULLPACK/" $1 "; else mkdir /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/DELTA.PROJET/"PRG"/TAF-FULLPACK/" $1 "; rcp t24ass@" HOST ":" CHEMIN "/" PACK "/" $0 " /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/DELTA.PROJET/"PRG"/TAF-FULLPACK/" $1 ";fi"}'|bash
+
+
+
+ cd /VERSDATA/LWorkings/LW_RELEASE/depot_release/branches/DELTA.PROJET/$3/TAF-FULLPACK/
+ svn add * --force
+ svn ci -m "$MSG2"
+
+echo " VERSIONNING REUSSI SUR LA BRANCHE DELTA.PROJET $MSG2"
+
+else
+echo " le niveau projet est inexistant "
+
+fi
+
+
+fi

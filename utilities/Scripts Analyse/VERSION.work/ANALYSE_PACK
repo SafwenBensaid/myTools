@@ -1,0 +1,34 @@
+#!/bin/bash
+
+echo '#####START_ANALYSE_PACK#####';
+
+./VERIF_$2 $1
+
+#VERIF=$(./VERIF_$2 $1);
+#if  [[ $VERIF == "#_#"[0-9]"#_#" ]]  
+#then
+#    echo -e  $VERIF | tr -s " " "\n";
+#else
+#    echo "<center><b>****VERIF****</b></center>";
+#    echo -e  $VERIF | tr -s " " "\n";		
+#fi
+
+./POSTPACK_$2 $1;
+./NEWPOSTPACK_$2 $1;
+
+#POSTPACK=$(./POSTPACK_$2 $1);
+#if  [[ $POSTPACK != "" ]]
+#then
+#    echo $POSTPACK | tr -s ":" "\n";
+#fi
+#NEWPOSTPACK=$(./NEWPOSTPACK_$2 $1);
+#if  [[ $NEWPOSTPACK != "" ]]
+#then
+#    echo $NEWPOSTPACK | tr -s ":" "\n";
+#fi
+
+
+echo '#####END_ANALYSE_PACK#####';
+echo '#####END_ANALYSE_PACK#####';
+echo '#####END_ANALYSE_PACK#####';
+

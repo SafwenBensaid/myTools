@@ -1,0 +1,49 @@
+* {margin:0; padding:0}
+.sm {list-style:none; width:894px; display:block; overflow:hidden}
+.sm li {float:left; display:inline; overflow:hidden}
+
+.eneloppe{
+    border-radius: 10px 0px 0px 10px;
+    border: 1px solid #35427E;
+    background-color: #ffffff;
+    margin-right: 5px;
+    margin-bottom: 8px;
+    -moz-box-shadow: 0 2px 7px rgba(0,0,0,.5);
+    -webkit-box-shadow: 0 1px 7px rgba(0,0,0,.5);
+    box-shadow: 3px 2px 7px rgba(0,0,0,.5);
+}
+.eneloppe .tableEneloppe{
+    min-height: 190px;
+}
+.eneloppe .titreBloc{
+    background-color: #35427e;
+    background-position: top; 
+    background-repeat: no-repeat;
+    max-width:35px;
+    min-width: 35px;
+    overflow: hidden;
+    border-radius: 7px 0px 0px 7px;
+    color:#ffffff;   
+    cursor: pointer;
+}
+.eneloppe .titreTextRelease{
+    background-image: url("../images/circuitRelease.png");
+    vertical-align: top;
+}
+.eneloppe .titreTextProjet{
+    background-image: url("../images/circuitProjet.png"); 
+    vertical-align: top;
+}
+.eneloppe .titreTextHotfix{
+    background-image: url("../images/circuitHotfix.png"); 
+    vertical-align: top;
+}
+.eneloppe .titreTextUpgrade{
+    background-image: url("../images/circuitUpgrade.png");
+    vertical-align: top;
+}
+.eneloppe .corpsBloc{
+    padding: 20px;
+    padding-top: 0px;
+    vertical-align: top;
+}

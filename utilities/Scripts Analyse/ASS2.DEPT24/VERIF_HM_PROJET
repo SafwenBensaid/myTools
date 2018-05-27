@@ -1,0 +1,46 @@
+
+
+
+DIR="/APP/biatass2/bnk/bnk.run/PACK.TAF"
+NAME=`ls /APP/biatass2/bnk/bnk.run/PACK.TAF/TAF-$1`
+PACK="TAF-$1"
+
+#echo "DIR :  $DIR"
+#echo "NAME:  $NAME"
+#echo "PACK:  $PACK"
+
+
+
+NBCTRL=`echo  -e "$NAME" |egrep -e "^HELPTEXT.MENU" |wc -l|sed 's/ //g'`
+
+if [ "$NBCTRL" = "0" ]
+then
+ echo "PAS DE HELPTEXT.MENU DANS LE PACK"
+
+else
+
+FLC=`ls /APP/biatass2/bnk/bnk.run/PACK.TAF/TAF-$1/HELPTEXT.MENU* `
+#FLC=`echo  -e "$NAME" |egrep -e "^FILE.CONTROL" `
+#echo "FLC $FLC"
+
+for FL in  $FLC;
+do
+
+#echo " OBJET: $FL "
+CLASS=`grep "COS " $FL`
+#echo "CLASS $CLASS  "
+
+if [ "$CLASS" != "" ]
+then
+
+HM=`echo $FL | cut -d/ -f8`
+#echo "HM = $HM "
+
+echo "Un EB.COMPOSITE.SCREEN existe dans le MENU $HM : il faut deployer le pack 2 fois "
+#echo "******************************************************************"
+
+fi
+done
+
+fi
+

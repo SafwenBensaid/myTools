@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<!--
+- Sample namespace-based configuration
+-
+- $Id: applicationContext-security.xml 3019 2008-05-01 17:51:48Z luke_t $
+-->
+ 
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans 
+                    http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                    http://www.springframework.org/schema/security 
+                    http://www.springframework.org/schema/security/spring-security-3.0.3.xsd">
+ 
+    <!--
+    <http pattern="/css/**" security="none" />
+    <http pattern="/images/**" security="none" />
+    <http pattern="/javascript/**" security="none" />
+    -->
+        
+    <http use-expressions="true" auto-config="true" access-denied-page="/accueil.do?erreur=accessDenied">
+        <intercept-url pattern="/index.jsp" access="permitAll" />
+        
+        
+        <!-- Gestion des livrisons -->
+        <intercept-url pattern="/getAllMilestonesForm.do" access="hasAnyRole('RECETTE_TECHNIQUE_DES_LIVRAISONS')" />
+        <intercept-url pattern="/analysePack.do" access="hasAnyRole('RECETTE_TECHNIQUE_DES_LIVRAISONS')" />
+        <intercept-url pattern="/resultatDeploiementPack.do" access="hasAnyRole('RECETTE_TECHNIQUE_DES_LIVRAISONS')" />
+        <intercept-url pattern="/resultatVersionnerPack.do" access="hasAnyRole('RECETTE_TECHNIQUE_DES_LIVRAISONS')" />
+        <intercept-url pattern="/resultatMessageTrac.do" access="hasAnyRole('RECETTE_TECHNIQUE_DES_LIVRAISONS')" />
+        <!-- Former Un pack -->
+        <intercept-url pattern="/PreparationFormerUnPackForm.do" access="hasAnyRole('EXTRACTION_PHYSIQUE_OBJETS')" />
+        <intercept-url pattern="/FormerUnPack.do" access="hasAnyRole('EXTRACTION_PHYSIQUE_OBJETS')" />
+        <intercept-url pattern="/ResultatCreerUnPack.do" access="hasAnyRole('EXTRACTION_PHYSIQUE_OBJETS')" />
+        <intercept-url pattern="/VerificationDeltaForm.do" access="hasAnyRole('EXTRACTION_PHYSIQUE_OBJETS')" />
+        <!-- Deployer plusieurs packs sur plusieurs environnements -->
+        <intercept-url pattern="/InputDeployerNPacksSurNEnvironnements.do" access="hasAnyRole('DEPLOIMENT_PARALLELLE_MULTI_PACK')" />
+        <intercept-url pattern="/ResultatDeployerNPacksSurNEnvironnements.do" access="hasAnyRole('DEPLOIMENT_PARALLELLE_MULTI_PACK')" />
+        <!-- Comparaison Pack -->
+        <intercept-url pattern="/VerificationDeltaForm.do" access="hasAnyRole('CONTROLE_COHERENCE_PACKS')" />
+        <intercept-url pattern="/VerificationDelta.do" access="hasAnyRole('CONTROLE_COHERENCE_PACKS')" />
+        <intercept-url pattern="/ResultatComparaisonDelta.do" access="hasAnyRole('CONTROLE_COHERENCE_PACKS')" />
+        <!-- Comparaison Objets -->
+        <intercept-url pattern="/PreparationComparaisonObjetsForm.do" access="hasAnyRole('CONTROLE_COHERENCE_OBJETS')" />
+        <intercept-url pattern="/ComparaisonObjets.do" access="hasAnyRole('CONTROLE_COHERENCE_OBJETS')" />
+        <intercept-url pattern="/ResultatComparaisonObjets.do" access="hasAnyRole('CONTROLE_COHERENCE_OBJETS')" />
+        <intercept-url pattern="/VerificationDeltaForm.do" access="hasAnyRole('CONTROLE_COHERENCE_OBJETS')" />
+        <!-- étude d'intersection -->
+        <intercept-url pattern="/EtudeIntersectionInputObjetsForm.do" access="hasAnyRole('ETUDE_INTERSECTION')" />
+        <intercept-url pattern="/ResutatEtudeIntersection.do" access="hasAnyRole('ETUDE_INTERSECTION')" />
+        <!-- <intercept-url pattern="/VerificationDeltaForm.do" access="hasAnyRole('ETUDE_INTERSECTION')" />-->
+        <!-- Constitution Pack Multiprojets -->
+        <intercept-url pattern="/ConstitutionPackMultiprojets.do" access="hasAnyRole('EXPORTATION_DELTA_PROJETS')" />
+        <intercept-url pattern="/ResultatConstitutionPackMultiprojets.do" access="hasAnyRole('EXPORTATION_DELTA_PROJETS')" />
+        <!-- Suivi release en cours -->
+        <intercept-url pattern="/SuiviReleaseEnCours.do" access="hasAnyRole('STATISTIQUE_RELEASE_EN_COURS_PAR_MILESTONE')" />
+        <!-- Administration: gestion de la base de données de paramètrages -->
+        <intercept-url pattern="/GestionBaseDonnesParametrages.do" access="hasAnyRole('GESTION_PARAMTRES')" />
+        
+        <intercept-url pattern="/VerificationDeltaForm.do" access="permitAll" />
+        <!--<intercept-url pattern="/LoginForm.do" access="permitAll" />-->
+        
+        <!-- Cadencement -->
+        <intercept-url pattern="/Cadencement.do" access="hasAnyRole('EXTRACTION_PHYSIQUE_OBJETS')" />
+        <intercept-url pattern="/ResultatCadencement.do" access="hasAnyRole('EXTRACTION_PHYSIQUE_OBJETS')" />
+        
+        <!-- Gestion Demandes: gestion Demandes Metier -->
+        <intercept-url pattern="/nouvelleDemandeMetier.do" access="hasAnyRole('GESTION_DES_DEMANDES')" />
+       
+        <!-- HrAccess -->
+        <intercept-url pattern="/getAllTicketsHraccessForm.do" access="hasAnyRole('HRACCESS_RECETTE_TECHNIQUE')" />
+        <intercept-url pattern="/exporterPackHraccessForm.do" access="hasAnyRole('HRACCESS_RECETTE_TECHNIQUE')" />
+        <intercept-url pattern="/ImporterPackHraccessForm.do" access="hasAnyRole('HRACCESS_RECETTE_TECHNIQUE')" />
+        <intercept-url pattern="/VersionnerPackHraccessForm.do" access="hasAnyRole('HRACCESS_RECETTE_TECHNIQUE')" />
+        <intercept-url pattern="/resultatExportHraccess.do" access="hasAnyRole('HRACCESS_RECETTE_TECHNIQUE')" />
+        <intercept-url pattern="/resultatImportHraccess.do" access="hasAnyRole('HRACCESS_RECETTE_TECHNIQUE')" />
+        <intercept-url pattern="/resultatVersionningHraccess.do" access="hasAnyRole('HRACCESS_RECETTE_TECHNIQUE')" />
+        <intercept-url pattern="/pages/footer.jsp" access="permitAll" />
+        <intercept-url pattern="/login.do" access="permitAll" />
+        <intercept-url pattern="/LoginForm.do" access="permitAll" />
+        <intercept-url pattern="/css/**" access="permitAll" />
+        <intercept-url pattern="/javascript/**" access="permitAll" />
+        <intercept-url pattern="/images/**" access="permitAll" />
+        <intercept-url pattern="/AfficherMessageEtatAvancement" access="permitAll" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />
+
+
+        <!--
+        <intercept-url pattern="/**" access="permitAll" />
+        <intercept-url pattern="/**" access="denyAll" />
+        -->
+        <!--<form-login login-page="/login.do" default-target-url="/accueil.do" authentication-failure-url="/login.do?error=true" /> -->
+        <form-login login-page="/login.do" default-target-url="/accueil.do" authentication-failure-url="/login.do?error=true" />
+        <logout logout-success-url="/login.do"/>
+        <!--
+        <session-management session-fixation-protection="newSession">
+            <concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/>
+        </session-management>
+        -->
+    </http>
+	
+	<!-- 
+			For authentication:
+			user-search-filter: the attribute name that contains the user name 
+		    user-search-base: the base path where to find user information
+		    
+		    For authorization:
+		    group-search-filter: the attribute name that contains the full dn of a user
+		    group-search-base: the base path where to find role information
+		    group-role-attribute: the attribute name that contains the role type
+		    role-prefix: the prefix to be added when retrieving role values
+		    
+                For server access:
+                manager-dn: the full dn of the person that has access to an LDAP server
+                manager-password: the password of the person that has access to an LDAP server
+    -->
+    <!--
+<authentication-manager>
+    <ldap-authentication-provider 
+        user-search-filter="sAMaccountname={0}" 
+        user-search-base="ou=Utilisateurs%20BIAT" 
+        group-search-filter="cn=authreader,cn=Users,DC=biat,DC=int"/>        
+</authentication-manager>
+<ldap-server url="ldap://biat.int:389/ou=Utilisateurs%20BIAT,DC=biat,DC=int" manager-dn="cn=authreader, cn=Users,DC=biat,DC=int" manager-password="re@d123$"/>
+    -->
+    
+    <beans:bean id="contextSource" class="org.springframework.security.ldap.DefaultSpringSecurityContextSource">
+        <beans:constructor-arg index="0" value="ldap://172.28.14.1:3268" />
+        <beans:property name="userDn" value="cn=authreader,cn=Users,DC=biat,DC=int" />
+        <beans:property name="password" value="re@d123$" />
+        <beans:property name="referral" value="follow" />
+        <beans:property name="pooled" value="true" />
+        <!--        <beans:property name="baseEnvironnementProperties">
+            <beans:map> 
+                <beans:entry key = "com.sun.jndi.ldap.connect.timeout" value ="1">
+            </beans:map>
+        </property>-->
+    </beans:bean>
+    
+    <beans:bean id="ldapUserSearch" class="org.springframework.security.ldap.search.FilterBasedLdapUserSearch">
+        <!--<beans:constructor-arg index="0" value="ou=Utilisateurs BIAT,DC=biat,DC=int" /> -->
+        <beans:constructor-arg index="0" value="DC=biat,DC=int" />
+        <!-- Branche principale à partir de laquelle faire la recherche -->
+        
+        
+        <beans:constructor-arg index="1" value="sAMAccountName={0}" /> <!-- Critère de recherche LDAP, ici le login de l'utilisateur correspond à l'uid de l'entrée LDAP -->
+        <beans:constructor-arg index="2" ref="contextSource" />
+        <beans:property name="searchSubtree" value="true" /> <!-- Recherche dans les sous-branches -->
+    </beans:bean>
+    
+    <beans:bean id="ldapAuthProvider" class="org.springframework.security.ldap.authentication.LdapAuthenticationProvider">
+        <beans:constructor-arg index="0">
+            <beans:bean class="org.springframework.security.ldap.authentication.BindAuthenticator">
+                <beans:constructor-arg index="0" ref="contextSource" />
+                <beans:property name="userSearch" ref="ldapUserSearch" />
+            </beans:bean>
+        </beans:constructor-arg>
+        <beans:constructor-arg index="1">
+            <beans:bean class="springSecurity.NetapsysAuthoritiesPopulator" />
+        </beans:constructor-arg>
+    </beans:bean>
+    
+    <authentication-manager>
+        <authentication-provider ref="ldapAuthProvider" />
+    </authentication-manager>
+</beans:beans>

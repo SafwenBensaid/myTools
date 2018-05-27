@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+ <!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 1.1//EN"
+       "http://jakarta.apache.org/struts/dtds/tiles-config_1_1.dtd">
+
+
+<!--
+     This is a blank Tiles definition file with a commented example.
+-->
+
+<tiles-definitions>
+    <!-- Gestion des livraisons -->
+    <definition name="gestionDesLivraisons" page="/pages/Home.jsp">
+        <put name="menuVertical" value="/pages/menuVertical.jsp" />	
+        <put name="corpsPage" value="/pages/gestionLivraisons/gestionDesLivraisonsInitialisation.jsp" />	  
+        <put name="footer" value="/pages/footer.jsp" />	                
+    </definition>    
+    
+    <!-- test -->
+    <definition name="test" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/test.jsp" />
+    </definition>
+    
+    <!-- Gestion Des Demandes -->
+    <definition name="definitionNouveauBesoin" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionDemandes/definitionNouveauBesoin.jsp" />
+    </definition>
+    
+    <definition name="listeDesProjets" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionDemandes/listeDesProjets.jsp" />
+    </definition>
+    
+    <definition name="specificationProjet" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionDemandes/specificationProjet.jsp" />
+    </definition>
+    
+    <definition name="accueil" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/accueil.jsp" />
+    </definition>
+    
+    <definition name="analysePack" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionLivraisons/ResultatAnalysePack.jsp" />
+    </definition>
+    
+    <definition name="resultatDeploiementPack" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionLivraisons/ResultatDeploiementPack.jsp" />
+    </definition>    
+    
+    <definition name="resultatVersionnerPack" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionLivraisons/ResultatVersionningPack.jsp" />
+    </definition>
+    
+    <definition name="resultatMessageTrac" extends="gestionDesLivraisons">        
+        <put name="corpsPage" value="/pages/gestionLivraisons/MessageTrac.jsp" />
+    </definition>
+    
+    <!-- Téléchargement du delta après son application sur un environnement -->
+    
+    <definition name="ComparaisonPacks" extends="gestionDesLivraisons">        
+        <put name="corpsPage" value="/pages/ComparaisonPacks.jsp" />
+    </definition>
+    
+    <definition name="ResultatComparaisonDelta" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/ResultatComparaisonDelta.jsp" />	                
+    </definition>  
+    
+    <definition name="FormerUnPack" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/FormerUnPack.jsp" />	                
+    </definition> 
+    
+    <definition name="ResultatCreerUnPack" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/ResultatCreerUnPack.jsp" />	                
+    </definition> 
+    
+    <definition name="ComparaisonObjets" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/ComparaisonObjets.jsp" />	                
+    </definition>
+    
+    <definition name="ResultatComparaisonObjets" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/ResultatComparaisonObjets.jsp" />	                
+    </definition>   
+    
+    <definition name="EtudeIntersectionInputObjets" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/EtudeIntersectionInputObjets.jsp" />	                
+    </definition>  
+    
+    <definition name="ResutatEtudeIntersection" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/ResutatEtudeIntersection.jsp" />	                
+    </definition> 
+    
+    <definition name="AfficherMessageErreurs" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/AfficherMessageErreurs.jsp" />	                
+    </definition> 
+    
+    
+    
+    <!-- Administration: gestion de la base de données de paramètrages -->    
+    <definition name="GestionBaseDonnesParametrages" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/administration/GestionBaseDonnesParametrages.jsp" />	                
+    </definition> 
+    
+    <!-- Rporting SuiviReleaseEnCours-->    
+    <definition name="SuiviReleaseEnCours" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/SuiviReleaseEnCours.jsp" />	                
+    </definition> 
+    
+    <!-- SuiviDesHotfix -->    
+    <definition name="SuiviDesHotfix" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/SuiviDesHotfix.jsp" />	                
+    </definition>     
+
+
+    <!-- AutorisationDesHotfix -->    
+    <definition name="AutorisationDesHotfix" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/AutorisationDesHotfix.jsp" />	                
+    </definition>  
+            
+            
+    <!-- AutorisationDesTicketsMaintenance -->    
+    <definition name="AutorisationDesTicketsMaintenance" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/AutorisationDesTicketsMaintenance.jsp" />	                
+    </definition>
+            
+    <!-- DelaisGestionIncident -->    
+    <definition name="DelaisGestionIncident" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/administration/DelaisGestionIncident.jsp" />	                
+    </definition>  
+    
+    <!-- RelanceDesHotfix -->    
+    <definition name="RelanceDesHotfix" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/RelanceDesHotfix.jsp" />	                
+    </definition>  
+    
+    <!-- JournalHfAppliquesProd -->    
+    <definition name="JournalHfAppliquesProd" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/JournalHfAppliquesProd.jsp" />	                
+    </definition> 
+                                     
+    <!-- Constitution Pack Multiprojets -->   
+    <definition name="ConstitutionPackMultiprojets" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/ConstitutionPackMultiprojets.jsp" />	                
+    </definition> 
+    
+    <definition name="ResultatConstitutionPackMultiprojets" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/ResultatConstitutionPackMultiprojets.jsp" />	                
+    </definition> 
+    
+    <!-- Deployer plusieurs packs sur plusieurs environnements -->
+    <definition name="InputDeployerNPacksSurNEnvironnements" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/deployerNPacksSurNEnvironnements/InputDeployerNPacksSurNEnvironnements.jsp" />	                
+    </definition> 
+    
+    <definition name="ResultatDeployerNPacksSurNEnvironnements" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/deployerNPacksSurNEnvironnements/ResultatDeployerNPacksSurNEnvironnements.jsp" />	                
+    </definition>
+    
+    <definition name="MessageTracIntegration" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/deployerNPacksSurNEnvironnements/MessageTracDeployerNPacksSurNEnvironnements.jsp" />
+    </definition>
+       
+    <!-- Login -->   
+    <definition name="login" extends="gestionDesLivraisons">
+        <put name="menu" value=""/>
+        <put name="corpsPage" value="/pages/login.jsp" />	                
+    </definition> 
+    
+    <!--workflow -->
+    <definition name="WorkflowInterface" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/administration/workflow.jsp" />
+    </definition>
+    
+    <!-- En cours de construction -->
+    <definition name="pageEnCoursDeConstruction" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/chantier.jsp" />
+    </definition>
+       
+    <!-- Normes Et Methodes: gestion du référentiel d'objets --> 
+    <definition name="GestionReferentielObjetInterface" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/administration/GestionReferentiel/AdministrationReferentielObjet.jsp" />	                
+    </definition> 
+    
+    <!-- Administration: GestionGroupesUtilisateurs --> 
+    <definition name="GestionGroupesUtilisateurs" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/administration/GestionProfilsUtilisateurs/GestionGroupesUtilisateurs.jsp" />	                
+    </definition> 
+    
+    <!-- administration: UserHasEnvironnement --> 
+    <definition name="ResultatUserHasEnvironnement" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/administration/GestionProfilsUtilisateurs/ResultatUserHasEnvironnement.jsp" />	                
+    </definition>
+    
+    <!-- Gestion des livraisons IE -->
+    <definition name="gestionDesLivraisonsIE" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionLivraisons/gestionDesLivraisonsInitialisation_IE.jsp" />                
+    </definition>    
+    
+    <!-- Gestion des livraisons CDD -->
+    <definition name="gestionDesLivraisonsCDD" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionLivraisons/gestionDesLivraisonsInitialisation_CDD.jsp" />                
+    </definition>    
+    
+    <!-- Administration: UserHasGroupe -->
+    <definition name="UserHasGroupe" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/administration/GestionProfilsUtilisateurs/AffectationGroupesUtilisateurs.jsp" />                
+    </definition>    
+    
+    <!-- Acces au environnements -->
+    <definition name="AccesAuxEnvironnements" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/AccesAuxEnvironnements.jsp" />
+    </definition>
+    
+    <!-- Clôture Tickets Anomalie -->
+    <definition name="ClotureTicketAnomalie" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/ClotureTicketAnomalie.jsp" />
+    </definition>
+    
+    <!-- administration: Fonctionnalites --> 
+    <definition name="AdministrationFonctionnalite" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/administration/GestionFonctionnalites/AdministrationFonctionnalite.jsp" />	                
+    </definition>
+    
+    <!-- administration: Type Regle --> 
+    <definition name="AdministrationContraintesIntegrite" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/administration/ContraintesIntegrite/ContraintesIntegrite.jsp" />	                
+    </definition>
+    
+    <!-- Suivi COBs -->
+    <definition name="SuiviCOBs" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/SuiviDemandeCob.jsp" />
+    </definition>
+      
+    <!-- Cadencement -->
+    <definition name="Cadencement" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/Cadencement.jsp" />
+    </definition>    
+    <definition name="ResultatCadencement" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/ResultatCadencement.jsp" />	                
+    </definition>
+
+    <!-- +++++++++++++++++++++++++++ newTrac +++++++++++++++++++++++++++ -->
+    <!-- Rporting HR Access --> 
+    <definition name="StatistiquesnewTrac" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/statistiquesnewTrac.jsp" />	                
+    </definition> 
+    <!-- Accès aux environnements HR Access --> 
+    <definition name="accesAuxEnvironnementsHrAccess" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsHrAccess.jsp" />	                
+    </definition> 
+    
+    <!-- +++++++++++++++++++++++++++ BFI CARTHAOGO +++++++++++++++++++++++++++ -->
+    <!-- Accès aux environnements BFI CARTHAGO --> 
+    <definition name="accesAuxEnvironnementsBfiCarthago" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsBfiCarthago.jsp" />	                
+    </definition> 
+    
+    <!-- +++++++++++++++++++++++++++ GTI WINSERGE +++++++++++++++++++++++++++ -->
+    <!-- Accès aux environnements GTI WINSERGE --> 
+    <definition name="accesAuxEnvironnementsGtiWinserge" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsGtiWinserge.jsp" />	                
+    </definition>  
+    
+    <!-- +++++++++++++++++++++++++++ Contentieux +++++++++++++++++++++++++++ -->
+    <!-- Accès aux environnements Contentieux --> 
+    <definition name="accesAuxEnvironnementsContentieux" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsContentieux.jsp" />	                
+    </definition> 
+    
+    <!-- +++++++++++++++++++++++++++ BFI TITRE +++++++++++++++++++++++++++ -->
+    <!-- Accès aux environnements BFI TITRE --> 
+    <definition name="accesAuxEnvironnementsBfiTitre" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsBfiTitre.jsp" />	                
+    </definition>
+    
+    <!-- +++++++++++++++++++++++++++ Gestion Courrier +++++++++++++++++++++++++++ -->
+    <!-- Accès aux environnements Gestion Courrier --> 
+    <definition name="accesAuxEnvironnementsGestionCourrier" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsGestionCourrier.jsp" />	                
+    </definition>  
+    
+    <!-- +++++++++++++++++++++++++++ Option Change +++++++++++++++++++++++++++ -->
+    <!-- Accès aux environnements Option Change --> 
+    <definition name="accesAuxEnvironnementsOptionChange" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsOptionChange.jsp" />	                
+    </definition>  
+    
+    <!-- +++++++++++++++++++++++++++ Prospection Tre +++++++++++++++++++++++++++ -->
+    <!-- Accès aux environnements Prospection Tre --> 
+    <definition name="accesAuxEnvironnementsProspectionTre" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsProspectionTre.jsp" />	                
+    </definition>  
+
+    <!-- +++++++++++++++++++++++++++ OGC +++++++++++++++++++++++++++ -->
+    <!-- Accès aux environnements OGC --> 
+    <definition name="accesAuxEnvironnementsOGC" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsOGC.jsp" />	                
+    </definition>       
+             
+    <!-- +++++++++++++++++++++++++++ vueConsolidee +++++++++++++++++++++++++++ -->
+    <definition name="vueConsolidee" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/vueConsolidee.jsp" />	                
+    </definition>              
+    
+    <!-- +++++++++++++++++++++++++++ vueConsolideeIncidentsParComposant +++++++++++++++++++++++++++ -->
+    <definition name="vueConsolideeIncidentsParComposant" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionIncidents/vueConsolideeIncidentsParComposant.jsp" />	                
+    </definition>       
+    <!-- +++++++++++++++++++++++++++ vueConsolideeIncidentsParResponsable +++++++++++++++++++++++++++ -->
+    <definition name="vueConsolideeIncidentsParResponsable" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionIncidents/vueConsolideeIncidentsParResponsable.jsp" />	                
+    </definition>            
+    
+    <!-- +++++++++++++++++++++++++++ vueConsolideeDemandesParComposant +++++++++++++++++++++++++++ -->
+    <definition name="vueConsolideeDemandesParComposant" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/gestionDemandes/vueConsolideeDemandesParComposant.jsp" />	                
+    </definition>          
+
+    <!-- +++++++++++++++++++++++++++ accesAuxEnvironnementsIcr +++++++++++++++++++++++++++ -->
+    <definition name="accesAuxEnvironnementsICR" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsIcr.jsp" />	                
+    </definition>                           
+             
+    <!-- +++++++++++++++++++++++++++ accesAuxEnvironnementsMXP +++++++++++++++++++++++++++ -->
+    <definition name="accesAuxEnvironnementsMXP" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsMXP.jsp" />	                
+    </definition>       
+    
+    <!-- +++++++++++++++++++++++++++ accesAuxEnvironnementsGD +++++++++++++++++++++++++++ -->
+    <definition name="accesAuxEnvironnementsGD" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/newTrac/accesAuxEnvironnements/accesAuxEnvironnementsGD.jsp" />	                
+    </definition>   
+    
+    <!-- Gestion des livraisons Hraccess-->
+    <definition name="gestionDesLivraisonsHraccessOV" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/hrAccess/gestionLivraisons/gestionDesLivraisonsHraccessOV.jsp" />                
+    </definition>    
+    <definition name="gestionDesLivraisonsHraccessIE" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/hrAccess/gestionLivraisons/gestionDesLivraisonsHraccessIE.jsp" />                
+    </definition> 
+    <definition name="resultatExportHraccess" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/hrAccess/gestionLivraisons/ResultatExportHraccess.jsp" />
+    </definition>
+    <definition name="resultatImportHraccess" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/hrAccess/gestionLivraisons/ResultatImportHraccess.jsp" />
+    </definition>        
+    <definition name="resultatVersionningHraccess" extends="gestionDesLivraisons">
+        <put name="corpsPage" value="/pages/hrAccess/gestionLivraisons/ResultatVersionningHraccess.jsp" />
+    </definition>         
+             
+</tiles-definitions>
